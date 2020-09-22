@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,7 +8,7 @@ namespace LogiLockLED
     public partial class ConfigurationForm : Form
     {
         private readonly LedSettings ledSettings;
-        public event EventHandler SettingsUpdated;
+        public event EventHandler SettingsUpdated;        
 
         public ConfigurationForm(ref LedSettings settings)
         {
@@ -16,7 +17,6 @@ namespace LogiLockLED
             PopulateSettingsToUI();
         }
         
-
         private void btnColour_Click(object sender, EventArgs e)
         {
             colorDialog.Color = (sender as Button).BackColor;
@@ -49,6 +49,7 @@ namespace LogiLockLED
         private void PopulateSettingsToUI()
         {
             cbEnable.Checked = ledSettings.EnableKeyLockLEDs;
+
             cbEnableCaps.Checked = ledSettings.EnableCaps;
             btnCapsOffColour.BackColor = ledSettings.CapsOffColour;
             btnCapsOnColour.BackColor = ledSettings.CapsOnColour;
@@ -60,6 +61,9 @@ namespace LogiLockLED
             cbEnableScroll.Checked = ledSettings.EnableScroll;
             btnScrollOffColour.BackColor = ledSettings.ScrollOffColour;
             btnScrollOnColour.BackColor = ledSettings.ScrollOnColour;
+
+            cbAutoStartApp.Checked = ledSettings.AutoStartApp;
+            
         }
 
         private void ApplySettings()
@@ -104,6 +108,11 @@ namespace LogiLockLED
         private void cbEnable_CheckedChanged(object sender, EventArgs e)
         {
             ledSettings.EnableKeyLockLEDs = cbEnable.Checked;
+        }
+
+        private void cbAutoStartApp_CheckedChanged(object sender, EventArgs e)
+        {
+            ledSettings.AutoStartApp = cbAutoStartApp.Checked;
         }
     }
 }

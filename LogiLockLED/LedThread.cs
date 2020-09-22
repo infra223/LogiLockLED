@@ -22,27 +22,47 @@ namespace LogiLockLED
         public LedThread(ref LedSettings settings)
         {
             ledSettings = settings;
-            thread = new Thread(ThreadMain);
-            stopThread = false;
-            
         }
 
         public void StartThread()
         {
-            stopThread = false;
-            thread.Start();
+            if (ledSettings.EnableKeyLockLEDs)
+            {
+                if (thread == null || thread.ThreadState == ThreadState.Aborted)
+                {
+                    thread = new Thread(ThreadMain);
+                    stopThread = false;
+                    thread.Start();
+                }                
+            }
         }
 
         public void StopThread()
         {
             stopThread = true;
             thread.Abort();
+            try
+            {
+                LogitechGSDK.LogiLedShutdown();
+            }
+            catch { }
         }
 
         public void UpdateSettings(LedSettings settings)
         {
             ledSettings = settings;
-            refreshRequired = true;
+            if (ledSettings.EnableKeyLockLEDs)
+            {                
+                refreshRequired = true;
+                if(thread == null || thread.ThreadState != ThreadState.Running)
+                {
+                    StartThread();
+                }
+            }
+            else
+            {
+                StopThread();
+            }
         }
 
         private void ThreadMain()

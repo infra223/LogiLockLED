@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Forms;
 using System.Drawing;
+using Microsoft.Win32;
 
 namespace LogiLockLED
 {
     public class LedSettings
     {
+        public bool AutoStartApp { get; set; }        
         public bool EnableKeyLockLEDs { get; set; }
         public bool EnableCaps { get; set; }
         public bool EnableNum { get; set; }
@@ -20,7 +18,9 @@ namespace LogiLockLED
         public Color NumOffColour { get; set; }
         public Color ScrollOnColour { get; set; }
         public Color ScrollOffColour { get; set; }
-        
+
+        private const string appRegKeyName = "LogiLockLED";
+
         public void LoadSettings()
         {
             EnableKeyLockLEDs = Properties.Settings.Default.EnableKeyLockLEDs;
@@ -34,6 +34,8 @@ namespace LogiLockLED
             NumOffColour = Properties.Settings.Default.NumOffColour;
             ScrollOnColour = Properties.Settings.Default.ScrollOnColour;
             ScrollOffColour = Properties.Settings.Default.ScrollOffColour;
+
+            AutoStartApp = GetAutoStartSetting();
 
         }
 
@@ -52,6 +54,27 @@ namespace LogiLockLED
             Properties.Settings.Default.ScrollOffColour = ScrollOffColour;
             Properties.Settings.Default.Save();
 
+            SaveAutoStartSetting();
+
+        }
+
+        private void SaveAutoStartSetting()
+        {
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (AutoStartApp)
+            {
+                reg.SetValue(appRegKeyName, Application.ExecutablePath);
+            }
+            else
+            {
+                reg.DeleteValue(appRegKeyName, false);
+            }
+        }
+
+        private bool GetAutoStartSetting()
+        {
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            return reg.GetValue(appRegKeyName, null) != null;
         }
     }
 }

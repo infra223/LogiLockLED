@@ -49,9 +49,9 @@
             this.btnScrollOnColour = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.cbEnable = new System.Windows.Forms.CheckBox();
+            this.cbAutoStartApp = new System.Windows.Forms.CheckBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -256,33 +256,13 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cbEnable);
-            this.groupBox4.Controls.Add(this.checkBox4);
+            this.groupBox4.Controls.Add(this.cbAutoStartApp);
             this.groupBox4.Location = new System.Drawing.Point(13, 13);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(289, 72);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "General Settings";
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(8, 19);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(96, 17);
-            this.checkBox4.TabIndex = 0;
-            this.checkBox4.Text = "Start on Log In";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(12, 385);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // cbEnable
             // 
@@ -294,6 +274,27 @@
             this.cbEnable.Text = "Enable Key Lock LEDs";
             this.cbEnable.UseVisualStyleBackColor = true;
             this.cbEnable.CheckedChanged += new System.EventHandler(this.cbEnable_CheckedChanged);
+            // 
+            // cbAutoStartApp
+            // 
+            this.cbAutoStartApp.AutoSize = true;
+            this.cbAutoStartApp.Location = new System.Drawing.Point(8, 19);
+            this.cbAutoStartApp.Name = "cbAutoStartApp";
+            this.cbAutoStartApp.Size = new System.Drawing.Size(128, 17);
+            this.cbAutoStartApp.TabIndex = 0;
+            this.cbAutoStartApp.Text = "Auto Start Application";
+            this.cbAutoStartApp.UseVisualStyleBackColor = true;
+            this.cbAutoStartApp.CheckedChanged += new System.EventHandler(this.cbAutoStartApp_CheckedChanged);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(12, 385);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(84, 23);
+            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnApply
             // 
@@ -356,7 +357,7 @@
         private System.Windows.Forms.Button btnScrollOnColour;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox cbAutoStartApp;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox cbEnable;
         private System.Windows.Forms.Button btnApply;
