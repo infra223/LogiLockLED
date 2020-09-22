@@ -3,5 +3,5 @@ Application to light up LEDs on Lock Keys  (Num, Caps or Scroll Lock) depending 
 
 This application makes use of Logitech's LED ILLUMINATION SDK that can be downoaded from their website: https://www.logitechg.com/en-us/innovation/developer-lab.html
 
-#Releases
+# Releases
 https://github.com/infra223/LogiLockLED/releases
