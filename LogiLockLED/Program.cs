@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -8,6 +9,9 @@ namespace LogiLockLED
 {
     static class Program
     {
+        private static Guid appGuid = new Guid("fcb10e99-94cd-4cb1-8bea-b092c9aec878");
+        private static Mutex singleInstanceMutex;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +20,22 @@ namespace LogiLockLED
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LogiLockLEDApp());
+
+            using (singleInstanceMutex = new Mutex(false, appGuid.ToString()))
+            {
+                if (!singleInstanceMutex.WaitOne(0, false))
+                {
+                    MessageBox.Show("Another instance of LogiLockLED is already running.");
+                    return;
+                }
+
+                Application.Run(new LogiLockLEDApp());
+                GC.KeepAlive(singleInstanceMutex);
+            }           
+            
         }
+
+        
+     
     }
 }

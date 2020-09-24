@@ -1,9 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LogiLockLED
@@ -19,6 +15,7 @@ namespace LogiLockLED
         {
             ledSettings = new LedSettings();
             ledSettings.LoadSettings();
+
             ledThread = new LedThread(ref ledSettings);
             ledThread.StartThread();
 
@@ -35,8 +32,9 @@ namespace LogiLockLED
             notifyIcon.DoubleClick += ShowConfig;
             notifyIcon.Visible = true;
 
-            Microsoft.Win32.SystemEvents.PowerModeChanged += OnPowerModeChange;
-        }
+            SystemEvents.PowerModeChanged += OnPowerModeChange;
+        }        
+        
 
         private void ConfigWindow_OnSettingsUpdated(object sender, EventArgs e)
         {
