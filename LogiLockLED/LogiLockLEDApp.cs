@@ -11,6 +11,8 @@ namespace LogiLockLED
         private readonly ConfigurationForm configWindow;
         private readonly LedSettings ledSettings;
 
+        private readonly MenuItem configEnableItem;
+
         public LogiLockLEDApp()
         {
             ledSettings = new LedSettings();
@@ -22,13 +24,15 @@ namespace LogiLockLED
             configWindow = new ConfigurationForm(ref ledSettings);
             configWindow.SettingsUpdated += ConfigWindow_OnSettingsUpdated;
 
+            configEnableItem = new MenuItem("Enabled", new EventHandler(ToggleEnabled));
+            configEnableItem.Checked = ledSettings.EnableKeyLockLEDs;
             MenuItem configMenuItem = new MenuItem("Configuration", new EventHandler(ShowConfig));
             MenuItem exitMenuItem = new MenuItem("Exit", new EventHandler(Exit));
 
             notifyIcon = new NotifyIcon();
             notifyIcon.Icon = Properties.Resources.appicon;
             notifyIcon.ContextMenu = new ContextMenu(new MenuItem[]
-                { configMenuItem, exitMenuItem });
+                { configEnableItem, configMenuItem, exitMenuItem });
             notifyIcon.DoubleClick += ShowConfig;
             notifyIcon.Visible = true;
 
@@ -41,7 +45,7 @@ namespace LogiLockLED
             ledThread.UpdateSettings(ledSettings);
         }
 
-        void ShowConfig(object sender, EventArgs e)
+        private void ShowConfig(object sender, EventArgs e)
         {
             // If we are already showing the window, merely focus it.
             if (configWindow.Visible)
@@ -54,7 +58,15 @@ namespace LogiLockLED
             }
         }
 
-        void Exit(object sender, EventArgs e)
+        private void ToggleEnabled(object sender, EventArgs e)
+        {
+            ledSettings.EnableKeyLockLEDs = !ledSettings.EnableKeyLockLEDs;
+            ledSettings.SaveSettings();
+            ledThread.UpdateSettings(ledSettings);
+            configEnableItem.Checked = ledSettings.EnableKeyLockLEDs;
+        }
+
+        private void Exit(object sender, EventArgs e)
         {
             // We must manually tidy up and remove the icon before we exit.
             // Otherwise it will be left behind until the user mouses over.

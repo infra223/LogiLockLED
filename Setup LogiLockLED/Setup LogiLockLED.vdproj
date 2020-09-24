@@ -94,6 +94,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6"
+                    }
+                }
             }
         }
     }
@@ -211,15 +219,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LogiLockLED"
-        "ProductCode" = "8:{613BFB16-642A-4D25-A743-0198D21CD603}"
-        "PackageCode" = "8:{0D98C789-CC74-43C6-88A8-158FFD8D4774}"
+        "ProductCode" = "8:{9D536C35-D614-42F1-8D8B-B6CD604EBF6A}"
+        "PackageCode" = "8:{01E03ACB-62FF-4EE2-9BA2-0C2940FC1895}"
         "UpgradeCode" = "8:{78AFA0F5-6764-47BF-AB9E-B70F753BFF36}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:LogiLockLED"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -811,7 +819,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_07E4DEC6E9E3405884DB88A2424013E6"
             {
-            "SourcePath" = "8:..\\LogiLockLED\\obj\\Debug\\LogiLockLED.exe"
+            "SourcePath" = "8:..\\LogiLockLED\\obj\\Release\\LogiLockLED.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_36D160D8655A4CDC84075D1F1CDB81FE"
