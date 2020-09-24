@@ -24,11 +24,17 @@ namespace LogiLockLED
             ledSettings = settings;
         }
 
+        public void RestartThread()
+        {
+            StopThread();
+            StartThread();
+        }
+
         public void StartThread()
         {
             if (ledSettings.EnableKeyLockLEDs)
             {
-                if (thread == null || thread.ThreadState == ThreadState.Aborted)
+                if (thread == null || thread.ThreadState != ThreadState.Running)
                 {
                     thread = new Thread(ThreadMain);
                     stopThread = false;
