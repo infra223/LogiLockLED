@@ -9,8 +9,8 @@ namespace LogiLockLED
         private readonly LedThread ledThread;
         private readonly NotifyIcon notifyIcon;
         private readonly ConfigurationForm configWindow;
-        private readonly LedSettings ledSettings;
-
+        private readonly IndicatorPopup popupWindow;
+        private readonly LedSettings ledSettings;        
         private readonly MenuItem configEnableItem;
 
         public LogiLockLEDApp()
@@ -18,32 +18,49 @@ namespace LogiLockLED
             ledSettings = new LedSettings();
             ledSettings.LoadSettings();
 
-            ledThread = new LedThread(ref ledSettings);
-            ledThread.StartThread();
-
             configWindow = new ConfigurationForm(ref ledSettings);
             configWindow.SettingsUpdated += ConfigWindow_OnSettingsUpdated;
+            popupWindow = new IndicatorPopup();
+            popupWindow.Configure(ledSettings);
+            //popupWindow.LoadForm();
 
-            configEnableItem = new MenuItem("Enabled", new EventHandler(ToggleEnabled));
-            configEnableItem.Checked = ledSettings.EnableKeyLockLEDs;
-            MenuItem configMenuItem = new MenuItem("Configuration", new EventHandler(ShowConfig));
-            MenuItem exitMenuItem = new MenuItem("Exit", new EventHandler(Exit));
+            ledThread = new LedThread(ref ledSettings);
+            ledThread.KeylockUpdated += ledThread_OnKeylockUpdated;
+            ledThread.StartThread();            
 
+            configEnableItem = new MenuItem("Enabled", new EventHandler(ToggleEnabled)) { 
+                Checked = ledSettings.EnableKeyLockLEDs };
+            
             notifyIcon = new NotifyIcon();
             notifyIcon.Icon = Properties.Resources.appicon;
-            notifyIcon.ContextMenu = new ContextMenu(new MenuItem[]
-                { configEnableItem, configMenuItem, exitMenuItem });
+            notifyIcon.ContextMenu = new ContextMenu(new MenuItem[]{ 
+                new MenuItem("LogiLockLED") { Enabled = false}, 
+                new MenuItem("-"), 
+                configEnableItem, 
+                new MenuItem("Configuration", new EventHandler(ShowConfig)),
+                new MenuItem("Exit", new EventHandler(Exit))
+            });
             notifyIcon.DoubleClick += ShowConfig;
             notifyIcon.Visible = true;
 
-            SystemEvents.PowerModeChanged += OnPowerModeChange;
-        }        
-        
+            SystemEvents.PowerModeChanged += OnPowerModeChange;            
+        }
+
+        private void ledThread_OnKeylockUpdated(object sender, EventArgs e)
+        {
+            var args = (e as KeylockChangeArgs);
+            if (ledSettings.OsdEnabled)
+            {
+                popupWindow.Invoke(new Action<LockKey, bool>(popupWindow.ShowLockState), args.LockKey, args.IsOn);
+            }
+        }
 
         private void ConfigWindow_OnSettingsUpdated(object sender, EventArgs e)
         {
+            popupWindow.Configure(ledSettings);
             ledThread.UpdateSettings(ledSettings);
-        }
+            
+        }               
 
         private void ShowConfig(object sender, EventArgs e)
         {
@@ -76,7 +93,7 @@ namespace LogiLockLED
 
             this.ExitThread();
             Application.Exit();
-        }
+        }     
         
         private void OnPowerModeChange(object s, PowerModeChangedEventArgs e)
         {

@@ -32,5 +32,32 @@
     <Setting Name="EnableKeyLockLEDs" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="OsdFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Arial, 48pt, style=Bold, Italic</Value>
+    </Setting>
+    <Setting Name="OsdPosition" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Centre</Value>
+    </Setting>
+    <Setting Name="OsdPadding" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="OsdMargin" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="OsdRoundedCorners" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="OsdEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="OsdTextColour" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="OsdBackColour" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">3, 3, 3</Value>
+    </Setting>
+    <Setting Name="OsdOpacity" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

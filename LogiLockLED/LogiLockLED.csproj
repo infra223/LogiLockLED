@@ -53,8 +53,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>LogiLockLED.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>DB700B4E29B3FC7EB40F17534E91D085E9467935</ManifestCertificateThumbprint>
@@ -88,6 +87,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IndicatorPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndicatorPopup.Designer.cs">
+      <DependentUpon>IndicatorPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogiLockLEDApp.cs" />
     <Compile Include="ConfigurationForm.cs">
       <SubType>Form</SubType>
@@ -102,6 +107,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ConfigurationForm.resx">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndicatorPopup.resx">
+      <DependentUpon>IndicatorPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -144,6 +152,7 @@
     <None Include="Resources\appicon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LogiLockLED.ico" />
     <Content Include="LogitechLedEnginesWrapper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

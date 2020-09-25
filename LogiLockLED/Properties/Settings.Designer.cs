@@ -142,5 +142,113 @@ namespace LogiLockLED.Properties {
                 this["EnableKeyLockLEDs"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Arial, 48pt, style=Bold, Italic")]
+        public global::System.Drawing.Font OsdFont {
+            get {
+                return ((global::System.Drawing.Font)(this["OsdFont"]));
+            }
+            set {
+                this["OsdFont"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Centre")]
+        public string OsdPosition {
+            get {
+                return ((string)(this["OsdPosition"]));
+            }
+            set {
+                this["OsdPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int OsdPadding {
+            get {
+                return ((int)(this["OsdPadding"]));
+            }
+            set {
+                this["OsdPadding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int OsdMargin {
+            get {
+                return ((int)(this["OsdMargin"]));
+            }
+            set {
+                this["OsdMargin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OsdRoundedCorners {
+            get {
+                return ((bool)(this["OsdRoundedCorners"]));
+            }
+            set {
+                this["OsdRoundedCorners"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OsdEnabled {
+            get {
+                return ((bool)(this["OsdEnabled"]));
+            }
+            set {
+                this["OsdEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color OsdTextColour {
+            get {
+                return ((global::System.Drawing.Color)(this["OsdTextColour"]));
+            }
+            set {
+                this["OsdTextColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3, 3, 3")]
+        public global::System.Drawing.Color OsdBackColour {
+            get {
+                return ((global::System.Drawing.Color)(this["OsdBackColour"]));
+            }
+            set {
+                this["OsdBackColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
+        public int OsdOpacity {
+            get {
+                return ((int)(this["OsdOpacity"]));
+            }
+            set {
+                this["OsdOpacity"] = value;
+            }
+        }
     }
 }

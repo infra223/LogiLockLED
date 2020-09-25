@@ -1,19 +1,26 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace LogiLockLED
 {
+    public enum OSDPosition { Centre = 1, Top_Left, Top_Right, Bottom_Left, Bottom_Right }
     public partial class ConfigurationForm : Form
     {
         private readonly LedSettings ledSettings;
         public event EventHandler SettingsUpdated;        
 
+        
+
         public ConfigurationForm(ref LedSettings settings)
         {
             InitializeComponent();
             ledSettings = settings;
+            cbOSDPosition.DataSource = Enum.GetValues(typeof(OSDPosition));
+            cbOSDPosition.SelectedIndex = 0;
+
             PopulateSettingsToUI();
         }
         
@@ -44,6 +51,12 @@ namespace LogiLockLED
                 ledSettings.ScrollOffColour = color;
             if (sender == btnScrollOnColour)
                 ledSettings.ScrollOnColour = color;
+
+            if (sender == btnOsdTxtColour)
+                ledSettings.OsdTextColour = color == Color.Black ? Color.FromArgb(3, 3, 3) : color;
+            if (sender == btnOsdBkColour)
+                ledSettings.OsdBackColour = color == Color.Black ? Color.FromArgb(3, 3, 3) : color;
+
         }
 
         private void PopulateSettingsToUI()
@@ -63,11 +76,28 @@ namespace LogiLockLED
             btnScrollOnColour.BackColor = ledSettings.ScrollOnColour;
 
             cbAutoStartApp.Checked = ledSettings.AutoStartApp;
-            
+
+            cbOsdEnabled.Checked = ledSettings.OsdEnabled;
+            cbOSDPosition.SelectedItem = ledSettings.OsdPosition;
+            btnOsdFont.Text = ledSettings.OsdFont.SizeInPoints.ToString() + ", " + ledSettings.OsdFont.FontFamily.Name;
+            fontDialog.Font = ledSettings.OsdFont;
+            cbOsdPadding.Value = ledSettings.OsdPadding;
+            cbOsdMargin.Value = ledSettings.OsdMargin;
+            cbOsdRoundedCorners.Checked = ledSettings.OsdRoundedCorners;
+            btnOsdTxtColour.BackColor = ledSettings.OsdTextColour;
+            btnOsdBkColour.BackColor = ledSettings.OsdBackColour;
+            cbOsdOpacity.Value = ledSettings.OsdOpacity;
         }
 
         private void ApplySettings()
         {
+            ledSettings.OsdEnabled = cbOsdEnabled.Checked;
+            ledSettings.OsdPosition = (OSDPosition)cbOSDPosition.SelectedItem;
+            ledSettings.OsdPadding = (int)cbOsdPadding.Value;
+            ledSettings.OsdMargin = (int)cbOsdMargin.Value;
+            ledSettings.OsdRoundedCorners = cbOsdRoundedCorners.Checked;
+            ledSettings.OsdOpacity = (int)cbOsdOpacity.Value;
+
             ledSettings.SaveSettings();
             SettingsUpdated?.Invoke(this, new EventArgs());
         }
@@ -113,6 +143,15 @@ namespace LogiLockLED
         private void cbAutoStartApp_CheckedChanged(object sender, EventArgs e)
         {
             ledSettings.AutoStartApp = cbAutoStartApp.Checked;
+        }
+
+        private void btnFont_Click(object sender, EventArgs e)
+        {
+            if( fontDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                ledSettings.OsdFont = fontDialog.Font;
+                btnOsdFont.Text = ledSettings.OsdFont.SizeInPoints.ToString() + ", " + ledSettings.OsdFont.FontFamily.Name;
+            }                       
         }
     }
 }

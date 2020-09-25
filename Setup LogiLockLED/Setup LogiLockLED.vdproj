@@ -220,7 +220,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LogiLockLED"
         "ProductCode" = "8:{9D536C35-D614-42F1-8D8B-B6CD604EBF6A}"
-        "PackageCode" = "8:{01E03ACB-62FF-4EE2-9BA2-0C2940FC1895}"
+        "PackageCode" = "8:{EB25EC29-C4A5-4B5F-89ED-568735D0C0F8}"
         "UpgradeCode" = "8:{78AFA0F5-6764-47BF-AB9E-B70F753BFF36}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -819,7 +819,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_07E4DEC6E9E3405884DB88A2424013E6"
             {
-            "SourcePath" = "8:..\\LogiLockLED\\obj\\Release\\LogiLockLED.exe"
+            "SourcePath" = "8:..\\LogiLockLED\\obj\\Debug\\LogiLockLED.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_36D160D8655A4CDC84075D1F1CDB81FE"
