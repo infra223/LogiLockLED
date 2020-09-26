@@ -1,7 +1,7 @@
 # LogiLockLED
 Application to light up Lock Keys (Num, Caps or Scroll Lock) depending on state.  This is compatible with Logitech Gaming Keyboards and requires G Hub to be installed and running.
 
-An customizable On-Screen Display is available to visually indicate lock changes on screen.
+A customizable On-Screen Display is available to visually indicate lock changes on screen.
 
 
 # Releases
