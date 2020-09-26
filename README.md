@@ -1,10 +1,13 @@
 # LogiLockLED
 Application to light up Lock Keys (Num, Caps or Scroll Lock) depending on state.  This is compatible with Logitech Gaming Keyboards and requires G Hub to be installed and running.
 
-An customizable On-Screen Display is also available to show lock changes on screen.
+An customizable On-Screen Display is available to visually indicate lock changes on screen.
+
 
 # Releases
+The latest release is available at: 
 https://github.com/infra223/LogiLockLED/releases
+
 
 # How to use
 - Install G Hub and ensure your keyboard is accessible
@@ -12,6 +15,9 @@ https://github.com/infra223/LogiLockLED/releases
 - In G Hub: select a "FREESTYLE" colour scheme for your keyboard.  This will not work with animated schemes.
 - Enable LogiLockLED or restart it to apply the key lock LEDs on top of the freestyle colour scheme.
 
-# Note
+
+#### Note
 This application makes use of Logitech's LED ILLUMINATION SDK that can be downloaded from their website: https://www.logitechg.com/en-us/innovation/developer-lab.html. 
 The use of this SDK is subject to Logitech's End-User License Agreement for Logitech Gaming LED SDK.
+
+Source Code for LogiLockLED is licensed under the MIT license.
