@@ -29,6 +29,7 @@ namespace LogiLockLED
         public Color OsdTextColour { get; set; }
         public Color OsdBackColour { get; set; }
         public int OsdOpacity { get; set; }
+        public int OsdDuration { get; set; }
 
         private const string appRegKeyName = "LogiLockLED";
 
@@ -59,6 +60,7 @@ namespace LogiLockLED
             OsdTextColour = Properties.Settings.Default.OsdTextColour;
             OsdBackColour = Properties.Settings.Default.OsdBackColour;
             OsdOpacity = Properties.Settings.Default.OsdOpacity;
+            OsdDuration = Properties.Settings.Default.OsdDuration;
         }
 
         public void SaveSettings()
@@ -84,6 +86,7 @@ namespace LogiLockLED
             Properties.Settings.Default.OsdTextColour = OsdTextColour;
             Properties.Settings.Default.OsdBackColour = OsdBackColour;
             Properties.Settings.Default.OsdOpacity = OsdOpacity;
+            Properties.Settings.Default.OsdDuration = OsdDuration;
 
             Properties.Settings.Default.Save();
 

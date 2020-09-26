@@ -55,31 +55,34 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cbOsdEnabled = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbOSDPosition = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.fontDialog = new System.Windows.Forms.FontDialog();
-            this.btnOsdFont = new System.Windows.Forms.Button();
-            this.cbOsdPadding = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbOsdMargin = new System.Windows.Forms.NumericUpDown();
-            this.cbOsdRoundedCorners = new System.Windows.Forms.CheckBox();
-            this.btnOsdTxtColour = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnOsdBkColour = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.cbOsdOpacity = new System.Windows.Forms.NumericUpDown();
+            this.btnOsdBkColour = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnOsdTxtColour = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbOsdRoundedCorners = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbOsdMargin = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbOsdPadding = new System.Windows.Forms.NumericUpDown();
+            this.btnOsdFont = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbOSDPosition = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbOsdEnabled = new System.Windows.Forms.CheckBox();
+            this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbOsdDurtation = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbOsdPadding)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbOsdMargin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbOsdOpacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOsdMargin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOsdPadding)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOsdDurtation)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -332,6 +335,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.cbOsdDurtation);
+            this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.cbOsdOpacity);
             this.groupBox5.Controls.Add(this.btnOsdBkColour);
@@ -350,89 +355,72 @@
             this.groupBox5.Controls.Add(this.cbOsdEnabled);
             this.groupBox5.Location = new System.Drawing.Point(301, 13);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 266);
+            this.groupBox5.Size = new System.Drawing.Size(200, 289);
             this.groupBox5.TabIndex = 10;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "On-Screen Display";
             // 
-            // cbOsdEnabled
+            // label13
             // 
-            this.cbOsdEnabled.AutoSize = true;
-            this.cbOsdEnabled.Location = new System.Drawing.Point(7, 20);
-            this.cbOsdEnabled.Name = "cbOsdEnabled";
-            this.cbOsdEnabled.Size = new System.Drawing.Size(85, 17);
-            this.cbOsdEnabled.TabIndex = 0;
-            this.cbOsdEnabled.Text = "Enable OSD";
-            this.cbOsdEnabled.UseVisualStyleBackColor = true;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 234);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Opacity:";
             // 
-            // label7
+            // cbOsdOpacity
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 43);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Position:";
+            this.cbOsdOpacity.Location = new System.Drawing.Point(61, 232);
+            this.cbOsdOpacity.Name = "cbOsdOpacity";
+            this.cbOsdOpacity.Size = new System.Drawing.Size(119, 20);
+            this.cbOsdOpacity.TabIndex = 14;
             // 
-            // cbOSDPosition
+            // btnOsdBkColour
             // 
-            this.cbOSDPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbOSDPosition.FormattingEnabled = true;
-            this.cbOSDPosition.Items.AddRange(new object[] {
-            "Center",
-            "Top Left",
-            "Top Right",
-            "Bottom Left",
-            "Bottom Right"});
-            this.cbOSDPosition.Location = new System.Drawing.Point(60, 40);
-            this.cbOSDPosition.Name = "cbOSDPosition";
-            this.cbOSDPosition.Size = new System.Drawing.Size(121, 21);
-            this.cbOSDPosition.TabIndex = 2;
+            this.btnOsdBkColour.Location = new System.Drawing.Point(96, 203);
+            this.btnOsdBkColour.Name = "btnOsdBkColour";
+            this.btnOsdBkColour.Size = new System.Drawing.Size(44, 23);
+            this.btnOsdBkColour.TabIndex = 13;
+            this.btnOsdBkColour.UseVisualStyleBackColor = true;
+            this.btnOsdBkColour.Click += new System.EventHandler(this.btnColour_Click);
             // 
-            // label8
+            // label12
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 150);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 13);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Font:";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 208);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Back Colour:";
             // 
-            // btnOsdFont
+            // btnOsdTxtColour
             // 
-            this.btnOsdFont.Location = new System.Drawing.Point(60, 145);
-            this.btnOsdFont.Name = "btnOsdFont";
-            this.btnOsdFont.Size = new System.Drawing.Size(121, 23);
-            this.btnOsdFont.TabIndex = 4;
-            this.btnOsdFont.Text = "Font";
-            this.btnOsdFont.UseVisualStyleBackColor = true;
-            this.btnOsdFont.Click += new System.EventHandler(this.btnFont_Click);
+            this.btnOsdTxtColour.Location = new System.Drawing.Point(96, 174);
+            this.btnOsdTxtColour.Name = "btnOsdTxtColour";
+            this.btnOsdTxtColour.Size = new System.Drawing.Size(44, 23);
+            this.btnOsdTxtColour.TabIndex = 11;
+            this.btnOsdTxtColour.UseVisualStyleBackColor = true;
+            this.btnOsdTxtColour.Click += new System.EventHandler(this.btnColour_Click);
             // 
-            // cbOsdPadding
+            // label11
             // 
-            this.cbOsdPadding.Location = new System.Drawing.Point(60, 67);
-            this.cbOsdPadding.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.cbOsdPadding.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.cbOsdPadding.Name = "cbOsdPadding";
-            this.cbOsdPadding.Size = new System.Drawing.Size(120, 20);
-            this.cbOsdPadding.TabIndex = 5;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(4, 179);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 13);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Text Colour:";
             // 
-            // label9
+            // cbOsdRoundedCorners
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 69);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(49, 13);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Padding:";
+            this.cbOsdRoundedCorners.AutoSize = true;
+            this.cbOsdRoundedCorners.Location = new System.Drawing.Point(7, 122);
+            this.cbOsdRoundedCorners.Name = "cbOsdRoundedCorners";
+            this.cbOsdRoundedCorners.Size = new System.Drawing.Size(109, 17);
+            this.cbOsdRoundedCorners.TabIndex = 9;
+            this.cbOsdRoundedCorners.Text = "Rounded Corners";
+            this.cbOsdRoundedCorners.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -460,67 +448,105 @@
             this.cbOsdMargin.Size = new System.Drawing.Size(120, 20);
             this.cbOsdMargin.TabIndex = 7;
             // 
-            // cbOsdRoundedCorners
+            // label9
             // 
-            this.cbOsdRoundedCorners.AutoSize = true;
-            this.cbOsdRoundedCorners.Location = new System.Drawing.Point(7, 122);
-            this.cbOsdRoundedCorners.Name = "cbOsdRoundedCorners";
-            this.cbOsdRoundedCorners.Size = new System.Drawing.Size(109, 17);
-            this.cbOsdRoundedCorners.TabIndex = 9;
-            this.cbOsdRoundedCorners.Text = "Rounded Corners";
-            this.cbOsdRoundedCorners.UseVisualStyleBackColor = true;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 69);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(49, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Padding:";
             // 
-            // btnOsdTxtColour
+            // cbOsdPadding
             // 
-            this.btnOsdTxtColour.Location = new System.Drawing.Point(96, 174);
-            this.btnOsdTxtColour.Name = "btnOsdTxtColour";
-            this.btnOsdTxtColour.Size = new System.Drawing.Size(44, 23);
-            this.btnOsdTxtColour.TabIndex = 11;
-            this.btnOsdTxtColour.UseVisualStyleBackColor = true;
-            this.btnOsdTxtColour.Click += new System.EventHandler(this.btnColour_Click);
+            this.cbOsdPadding.Location = new System.Drawing.Point(60, 67);
+            this.cbOsdPadding.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.cbOsdPadding.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.cbOsdPadding.Name = "cbOsdPadding";
+            this.cbOsdPadding.Size = new System.Drawing.Size(120, 20);
+            this.cbOsdPadding.TabIndex = 5;
             // 
-            // label11
+            // btnOsdFont
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 179);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Text Colour:";
+            this.btnOsdFont.Location = new System.Drawing.Point(60, 145);
+            this.btnOsdFont.Name = "btnOsdFont";
+            this.btnOsdFont.Size = new System.Drawing.Size(121, 23);
+            this.btnOsdFont.TabIndex = 4;
+            this.btnOsdFont.Text = "Font";
+            this.btnOsdFont.UseVisualStyleBackColor = true;
+            this.btnOsdFont.Click += new System.EventHandler(this.btnFont_Click);
             // 
-            // btnOsdBkColour
+            // label8
             // 
-            this.btnOsdBkColour.Location = new System.Drawing.Point(96, 203);
-            this.btnOsdBkColour.Name = "btnOsdBkColour";
-            this.btnOsdBkColour.Size = new System.Drawing.Size(44, 23);
-            this.btnOsdBkColour.TabIndex = 13;
-            this.btnOsdBkColour.UseVisualStyleBackColor = true;
-            this.btnOsdBkColour.Click += new System.EventHandler(this.btnColour_Click);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 150);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Font:";
             // 
-            // label12
+            // cbOSDPosition
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 208);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Back Colour:";
+            this.cbOSDPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOSDPosition.FormattingEnabled = true;
+            this.cbOSDPosition.Items.AddRange(new object[] {
+            "Center",
+            "Top Left",
+            "Top Right",
+            "Bottom Left",
+            "Bottom Right"});
+            this.cbOSDPosition.Location = new System.Drawing.Point(60, 40);
+            this.cbOSDPosition.Name = "cbOSDPosition";
+            this.cbOSDPosition.Size = new System.Drawing.Size(121, 21);
+            this.cbOSDPosition.TabIndex = 2;
             // 
-            // label13
+            // label7
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 234);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "Opacity:";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Position:";
             // 
-            // cbOsdOpacity
+            // cbOsdEnabled
             // 
-            this.cbOsdOpacity.Location = new System.Drawing.Point(61, 232);
-            this.cbOsdOpacity.Name = "cbOsdOpacity";
-            this.cbOsdOpacity.Size = new System.Drawing.Size(119, 20);
-            this.cbOsdOpacity.TabIndex = 14;
+            this.cbOsdEnabled.AutoSize = true;
+            this.cbOsdEnabled.Location = new System.Drawing.Point(7, 20);
+            this.cbOsdEnabled.Name = "cbOsdEnabled";
+            this.cbOsdEnabled.Size = new System.Drawing.Size(85, 17);
+            this.cbOsdEnabled.TabIndex = 0;
+            this.cbOsdEnabled.Text = "Enable OSD";
+            this.cbOsdEnabled.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 260);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 13);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Duration:";
+            // 
+            // cbOsdDurtation
+            // 
+            this.cbOsdDurtation.Location = new System.Drawing.Point(60, 258);
+            this.cbOsdDurtation.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.cbOsdDurtation.Name = "cbOsdDurtation";
+            this.cbOsdDurtation.Size = new System.Drawing.Size(119, 20);
+            this.cbOsdDurtation.TabIndex = 17;
             // 
             // ConfigurationForm
             // 
@@ -549,9 +575,10 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbOsdPadding)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbOsdMargin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbOsdOpacity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOsdMargin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOsdPadding)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOsdDurtation)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -601,6 +628,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown cbOsdOpacity;
+        private System.Windows.Forms.NumericUpDown cbOsdDurtation;
+        private System.Windows.Forms.Label label14;
     }
 }
 

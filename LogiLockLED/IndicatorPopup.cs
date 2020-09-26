@@ -102,7 +102,8 @@ namespace LogiLockLED
 
             lblLockText.ForeColor = settings.OsdTextColour;
             this.BackColor = settings.OsdBackColour;
-            this.Opacity = settings.OsdOpacity / 100d;            
+            this.Opacity = settings.OsdOpacity / 100d;
+            hideTimer.Interval = settings.OsdDuration;
         }
 
         /// <summary>

@@ -48,7 +48,7 @@ namespace LogiLockLED
         public void StopThread()
         {
             stopThread = true;
-            thread.Abort();
+            thread?.Abort();
             try
             {
                 LogitechGSDK.LogiLedShutdown();

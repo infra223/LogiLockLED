@@ -87,6 +87,7 @@ namespace LogiLockLED
             btnOsdTxtColour.BackColor = ledSettings.OsdTextColour;
             btnOsdBkColour.BackColor = ledSettings.OsdBackColour;
             cbOsdOpacity.Value = ledSettings.OsdOpacity;
+            cbOsdDurtation.Value = ledSettings.OsdDuration;
         }
 
         private void ApplySettings()
@@ -97,6 +98,7 @@ namespace LogiLockLED
             ledSettings.OsdMargin = (int)cbOsdMargin.Value;
             ledSettings.OsdRoundedCorners = cbOsdRoundedCorners.Checked;
             ledSettings.OsdOpacity = (int)cbOsdOpacity.Value;
+            ledSettings.OsdDuration = (int)cbOsdDurtation.Value;
 
             ledSettings.SaveSettings();
             SettingsUpdated?.Invoke(this, new EventArgs());
