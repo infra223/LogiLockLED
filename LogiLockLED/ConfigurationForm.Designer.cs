@@ -54,7 +54,8 @@
             this.cbAutoStartApp = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbOsdDurtation = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.cbOsdOpacity = new System.Windows.Forms.NumericUpDown();
             this.btnOsdBkColour = new System.Windows.Forms.Button();
@@ -72,17 +73,41 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbOsdEnabled = new System.Windows.Forms.CheckBox();
             this.fontDialog = new System.Windows.Forms.FontDialog();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cbOsdDurtation = new System.Windows.Forms.NumericUpDown();
+            this.cbTrayShowNum = new System.Windows.Forms.CheckBox();
+            this.cbTrayShowCaps = new System.Windows.Forms.CheckBox();
+            this.cbTrayShowScroll = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cbTrayOffTransparent = new System.Windows.Forms.CheckBox();
+            this.cbTrayOffBorder = new System.Windows.Forms.CheckBox();
+            this.btnTrayOffBgColor = new System.Windows.Forms.Button();
+            this.lblTrayOffBgColor = new System.Windows.Forms.Label();
+            this.btnTrayOffColor = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbTrayOnTransparent = new System.Windows.Forms.CheckBox();
+            this.cbTrayOnBorder = new System.Windows.Forms.CheckBox();
+            this.btnTrayOnBgColor = new System.Windows.Forms.Button();
+            this.lblTrayOnBgColor = new System.Windows.Forms.Label();
+            this.btnTrayOnColor = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOsdDurtation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbOsdOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbOsdMargin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbOsdPadding)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbOsdDurtation)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -92,7 +117,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnCapsOnColour);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(14, 178);
+            this.groupBox1.Location = new System.Drawing.Point(15, 103);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(271, 81);
             this.groupBox1.TabIndex = 2;
@@ -108,7 +133,6 @@
             this.cbEnableCaps.TabIndex = 4;
             this.cbEnableCaps.Text = "Enable";
             this.cbEnableCaps.UseVisualStyleBackColor = true;
-            this.cbEnableCaps.CheckedChanged += new System.EventHandler(this.cbEnableCaps_CheckedChanged);
             // 
             // btnCapsOffColour
             // 
@@ -149,11 +173,11 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(403, 385);
+            this.btnClose.Location = new System.Drawing.Point(220, 463);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(103, 23);
             this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Save and Close";
+            this.btnClose.Text = "OK";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -164,7 +188,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.btnNumOnColour);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(14, 91);
+            this.groupBox2.Location = new System.Drawing.Point(15, 16);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(271, 81);
             this.groupBox2.TabIndex = 5;
@@ -180,7 +204,6 @@
             this.cbEnableNum.TabIndex = 4;
             this.cbEnableNum.Text = "Enable";
             this.cbEnableNum.UseVisualStyleBackColor = true;
-            this.cbEnableNum.CheckedChanged += new System.EventHandler(this.cbEnableNum_CheckedChanged);
             // 
             // btnNumOffColour
             // 
@@ -225,7 +248,7 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.btnScrollOnColour);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(13, 265);
+            this.groupBox3.Location = new System.Drawing.Point(14, 190);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(272, 79);
             this.groupBox3.TabIndex = 6;
@@ -241,7 +264,6 @@
             this.cbEnableScroll.TabIndex = 4;
             this.cbEnableScroll.Text = "Enable";
             this.cbEnableScroll.UseVisualStyleBackColor = true;
-            this.cbEnableScroll.CheckedChanged += new System.EventHandler(this.cbEnableScroll_CheckedChanged);
             // 
             // btnScrollOffColour
             // 
@@ -299,7 +321,6 @@
             this.cbEnable.TabIndex = 1;
             this.cbEnable.Text = "Enable Key Lock LEDs";
             this.cbEnable.UseVisualStyleBackColor = true;
-            this.cbEnable.CheckedChanged += new System.EventHandler(this.cbEnable_CheckedChanged);
             // 
             // cbAutoStartApp
             // 
@@ -310,11 +331,11 @@
             this.cbAutoStartApp.TabIndex = 0;
             this.cbAutoStartApp.Text = "Auto Start Application";
             this.cbAutoStartApp.UseVisualStyleBackColor = true;
-            this.cbAutoStartApp.CheckedChanged += new System.EventHandler(this.cbAutoStartApp_CheckedChanged);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(12, 385);
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancel.Location = new System.Drawing.Point(12, 463);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 8;
@@ -325,7 +346,7 @@
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(304, 385);
+            this.btnApply.Location = new System.Drawing.Point(121, 463);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(93, 23);
             this.btnApply.TabIndex = 9;
@@ -333,37 +354,31 @@
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // groupBox5
+            // cbOsdDurtation
             // 
-            this.groupBox5.Controls.Add(this.cbOsdDurtation);
-            this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.cbOsdOpacity);
-            this.groupBox5.Controls.Add(this.btnOsdBkColour);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.btnOsdTxtColour);
-            this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.Controls.Add(this.cbOsdRoundedCorners);
-            this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.cbOsdMargin);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.cbOsdPadding);
-            this.groupBox5.Controls.Add(this.btnOsdFont);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.cbOSDPosition);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.cbOsdEnabled);
-            this.groupBox5.Location = new System.Drawing.Point(301, 13);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 289);
-            this.groupBox5.TabIndex = 10;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "On-Screen Display";
+            this.cbOsdDurtation.Location = new System.Drawing.Point(70, 256);
+            this.cbOsdDurtation.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.cbOsdDurtation.Name = "cbOsdDurtation";
+            this.cbOsdDurtation.Size = new System.Drawing.Size(119, 20);
+            this.cbOsdDurtation.TabIndex = 17;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(17, 258);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 13);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Duration:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 234);
+            this.label13.Location = new System.Drawing.Point(17, 232);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 15;
@@ -371,14 +386,14 @@
             // 
             // cbOsdOpacity
             // 
-            this.cbOsdOpacity.Location = new System.Drawing.Point(61, 232);
+            this.cbOsdOpacity.Location = new System.Drawing.Point(70, 230);
             this.cbOsdOpacity.Name = "cbOsdOpacity";
             this.cbOsdOpacity.Size = new System.Drawing.Size(119, 20);
             this.cbOsdOpacity.TabIndex = 14;
             // 
             // btnOsdBkColour
             // 
-            this.btnOsdBkColour.Location = new System.Drawing.Point(96, 203);
+            this.btnOsdBkColour.Location = new System.Drawing.Point(108, 201);
             this.btnOsdBkColour.Name = "btnOsdBkColour";
             this.btnOsdBkColour.Size = new System.Drawing.Size(44, 23);
             this.btnOsdBkColour.TabIndex = 13;
@@ -388,7 +403,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 208);
+            this.label12.Location = new System.Drawing.Point(17, 206);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 12;
@@ -396,7 +411,7 @@
             // 
             // btnOsdTxtColour
             // 
-            this.btnOsdTxtColour.Location = new System.Drawing.Point(96, 174);
+            this.btnOsdTxtColour.Location = new System.Drawing.Point(108, 172);
             this.btnOsdTxtColour.Name = "btnOsdTxtColour";
             this.btnOsdTxtColour.Size = new System.Drawing.Size(44, 23);
             this.btnOsdTxtColour.TabIndex = 11;
@@ -406,7 +421,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 179);
+            this.label11.Location = new System.Drawing.Point(17, 177);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(64, 13);
             this.label11.TabIndex = 10;
@@ -415,7 +430,7 @@
             // cbOsdRoundedCorners
             // 
             this.cbOsdRoundedCorners.AutoSize = true;
-            this.cbOsdRoundedCorners.Location = new System.Drawing.Point(7, 122);
+            this.cbOsdRoundedCorners.Location = new System.Drawing.Point(17, 120);
             this.cbOsdRoundedCorners.Name = "cbOsdRoundedCorners";
             this.cbOsdRoundedCorners.Size = new System.Drawing.Size(109, 17);
             this.cbOsdRoundedCorners.TabIndex = 9;
@@ -425,7 +440,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 95);
+            this.label10.Location = new System.Drawing.Point(17, 93);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 13);
             this.label10.TabIndex = 8;
@@ -433,7 +448,7 @@
             // 
             // cbOsdMargin
             // 
-            this.cbOsdMargin.Location = new System.Drawing.Point(60, 93);
+            this.cbOsdMargin.Location = new System.Drawing.Point(70, 91);
             this.cbOsdMargin.Maximum = new decimal(new int[] {
             -727379969,
             232,
@@ -451,7 +466,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 69);
+            this.label9.Location = new System.Drawing.Point(17, 67);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 13);
             this.label9.TabIndex = 6;
@@ -459,7 +474,7 @@
             // 
             // cbOsdPadding
             // 
-            this.cbOsdPadding.Location = new System.Drawing.Point(60, 67);
+            this.cbOsdPadding.Location = new System.Drawing.Point(70, 65);
             this.cbOsdPadding.Maximum = new decimal(new int[] {
             -727379969,
             232,
@@ -476,7 +491,7 @@
             // 
             // btnOsdFont
             // 
-            this.btnOsdFont.Location = new System.Drawing.Point(60, 145);
+            this.btnOsdFont.Location = new System.Drawing.Point(70, 143);
             this.btnOsdFont.Name = "btnOsdFont";
             this.btnOsdFont.Size = new System.Drawing.Size(121, 23);
             this.btnOsdFont.TabIndex = 4;
@@ -487,7 +502,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 150);
+            this.label8.Location = new System.Drawing.Point(17, 148);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 13);
             this.label8.TabIndex = 3;
@@ -503,7 +518,7 @@
             "Top Right",
             "Bottom Left",
             "Bottom Right"});
-            this.cbOSDPosition.Location = new System.Drawing.Point(60, 40);
+            this.cbOSDPosition.Location = new System.Drawing.Point(70, 38);
             this.cbOSDPosition.Name = "cbOSDPosition";
             this.cbOSDPosition.Size = new System.Drawing.Size(121, 21);
             this.cbOSDPosition.TabIndex = 2;
@@ -511,7 +526,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 43);
+            this.label7.Location = new System.Drawing.Point(17, 41);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 1;
@@ -520,50 +535,272 @@
             // cbOsdEnabled
             // 
             this.cbOsdEnabled.AutoSize = true;
-            this.cbOsdEnabled.Location = new System.Drawing.Point(7, 20);
+            this.cbOsdEnabled.Location = new System.Drawing.Point(17, 18);
             this.cbOsdEnabled.Name = "cbOsdEnabled";
             this.cbOsdEnabled.Size = new System.Drawing.Size(85, 17);
             this.cbOsdEnabled.TabIndex = 0;
             this.cbOsdEnabled.Text = "Enable OSD";
             this.cbOsdEnabled.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // cbTrayShowNum
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 260);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(50, 13);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Duration:";
+            this.cbTrayShowNum.AutoSize = true;
+            this.cbTrayShowNum.Location = new System.Drawing.Point(19, 18);
+            this.cbTrayShowNum.Name = "cbTrayShowNum";
+            this.cbTrayShowNum.Size = new System.Drawing.Size(105, 17);
+            this.cbTrayShowNum.TabIndex = 0;
+            this.cbTrayShowNum.Text = "Show Num Lock";
+            this.cbTrayShowNum.UseVisualStyleBackColor = true;
             // 
-            // cbOsdDurtation
+            // cbTrayShowCaps
             // 
-            this.cbOsdDurtation.Location = new System.Drawing.Point(60, 258);
-            this.cbOsdDurtation.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.cbOsdDurtation.Name = "cbOsdDurtation";
-            this.cbOsdDurtation.Size = new System.Drawing.Size(119, 20);
-            this.cbOsdDurtation.TabIndex = 17;
+            this.cbTrayShowCaps.AutoSize = true;
+            this.cbTrayShowCaps.Location = new System.Drawing.Point(19, 41);
+            this.cbTrayShowCaps.Name = "cbTrayShowCaps";
+            this.cbTrayShowCaps.Size = new System.Drawing.Size(107, 17);
+            this.cbTrayShowCaps.TabIndex = 1;
+            this.cbTrayShowCaps.Text = "Show Caps Lock";
+            this.cbTrayShowCaps.UseVisualStyleBackColor = true;
+            // 
+            // cbTrayShowScroll
+            // 
+            this.cbTrayShowScroll.AutoSize = true;
+            this.cbTrayShowScroll.Location = new System.Drawing.Point(19, 64);
+            this.cbTrayShowScroll.Name = "cbTrayShowScroll";
+            this.cbTrayShowScroll.Size = new System.Drawing.Size(109, 17);
+            this.cbTrayShowScroll.TabIndex = 2;
+            this.cbTrayShowScroll.Text = "Show Scroll Lock";
+            this.cbTrayShowScroll.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(12, 91);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(311, 355);
+            this.tabControl1.TabIndex = 12;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(303, 329);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Key Backlight";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.cbOsdDurtation);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.cbOsdEnabled);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.cbOsdOpacity);
+            this.tabPage2.Controls.Add(this.cbOSDPosition);
+            this.tabPage2.Controls.Add(this.btnOsdBkColour);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.btnOsdFont);
+            this.tabPage2.Controls.Add(this.btnOsdTxtColour);
+            this.tabPage2.Controls.Add(this.cbOsdPadding);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.cbOsdRoundedCorners);
+            this.tabPage2.Controls.Add(this.cbOsdMargin);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(303, 329);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "On-Screen Display";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox6);
+            this.tabPage3.Controls.Add(this.groupBox5);
+            this.tabPage3.Controls.Add(this.cbTrayShowScroll);
+            this.tabPage3.Controls.Add(this.cbTrayShowNum);
+            this.tabPage3.Controls.Add(this.cbTrayShowCaps);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(303, 329);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "System Tray Indicators";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.cbTrayOffTransparent);
+            this.groupBox6.Controls.Add(this.cbTrayOffBorder);
+            this.groupBox6.Controls.Add(this.btnTrayOffBgColor);
+            this.groupBox6.Controls.Add(this.lblTrayOffBgColor);
+            this.groupBox6.Controls.Add(this.btnTrayOffColor);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Location = new System.Drawing.Point(19, 185);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(236, 91);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Off Icon Style";
+            // 
+            // cbTrayOffTransparent
+            // 
+            this.cbTrayOffTransparent.AutoSize = true;
+            this.cbTrayOffTransparent.Location = new System.Drawing.Point(145, 55);
+            this.cbTrayOffTransparent.Name = "cbTrayOffTransparent";
+            this.cbTrayOffTransparent.Size = new System.Drawing.Size(83, 17);
+            this.cbTrayOffTransparent.TabIndex = 7;
+            this.cbTrayOffTransparent.Text = "Transparent";
+            this.cbTrayOffTransparent.UseVisualStyleBackColor = true;
+            this.cbTrayOffTransparent.CheckedChanged += new System.EventHandler(this.cbTrayOffTransparent_CheckedChanged);
+            // 
+            // cbTrayOffBorder
+            // 
+            this.cbTrayOffBorder.AutoSize = true;
+            this.cbTrayOffBorder.Location = new System.Drawing.Point(145, 26);
+            this.cbTrayOffBorder.Name = "cbTrayOffBorder";
+            this.cbTrayOffBorder.Size = new System.Drawing.Size(85, 17);
+            this.cbTrayOffBorder.TabIndex = 6;
+            this.cbTrayOffBorder.Text = "Draw Border";
+            this.cbTrayOffBorder.UseVisualStyleBackColor = true;
+            // 
+            // btnTrayOffBgColor
+            // 
+            this.btnTrayOffBgColor.Location = new System.Drawing.Point(80, 51);
+            this.btnTrayOffBgColor.Name = "btnTrayOffBgColor";
+            this.btnTrayOffBgColor.Size = new System.Drawing.Size(44, 23);
+            this.btnTrayOffBgColor.TabIndex = 5;
+            this.btnTrayOffBgColor.UseVisualStyleBackColor = true;
+            this.btnTrayOffBgColor.Click += new System.EventHandler(this.btnColour_Click);
+            // 
+            // lblTrayOffBgColor
+            // 
+            this.lblTrayOffBgColor.AutoSize = true;
+            this.lblTrayOffBgColor.Location = new System.Drawing.Point(6, 56);
+            this.lblTrayOffBgColor.Name = "lblTrayOffBgColor";
+            this.lblTrayOffBgColor.Size = new System.Drawing.Size(68, 13);
+            this.lblTrayOffBgColor.TabIndex = 4;
+            this.lblTrayOffBgColor.Text = "Background:";
+            // 
+            // btnTrayOffColor
+            // 
+            this.btnTrayOffColor.Location = new System.Drawing.Point(80, 22);
+            this.btnTrayOffColor.Name = "btnTrayOffColor";
+            this.btnTrayOffColor.Size = new System.Drawing.Size(44, 23);
+            this.btnTrayOffColor.TabIndex = 3;
+            this.btnTrayOffColor.UseVisualStyleBackColor = true;
+            this.btnTrayOffColor.Click += new System.EventHandler(this.btnColour_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 27);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(40, 13);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Colour:";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cbTrayOnTransparent);
+            this.groupBox5.Controls.Add(this.cbTrayOnBorder);
+            this.groupBox5.Controls.Add(this.btnTrayOnBgColor);
+            this.groupBox5.Controls.Add(this.lblTrayOnBgColor);
+            this.groupBox5.Controls.Add(this.btnTrayOnColor);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Location = new System.Drawing.Point(19, 88);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(236, 91);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "On Icon Style";
+            // 
+            // cbTrayOnTransparent
+            // 
+            this.cbTrayOnTransparent.AutoSize = true;
+            this.cbTrayOnTransparent.Location = new System.Drawing.Point(145, 55);
+            this.cbTrayOnTransparent.Name = "cbTrayOnTransparent";
+            this.cbTrayOnTransparent.Size = new System.Drawing.Size(83, 17);
+            this.cbTrayOnTransparent.TabIndex = 7;
+            this.cbTrayOnTransparent.Text = "Transparent";
+            this.cbTrayOnTransparent.UseVisualStyleBackColor = true;
+            this.cbTrayOnTransparent.CheckedChanged += new System.EventHandler(this.cbTrayOnTransparent_CheckedChanged);
+            // 
+            // cbTrayOnBorder
+            // 
+            this.cbTrayOnBorder.AutoSize = true;
+            this.cbTrayOnBorder.Location = new System.Drawing.Point(145, 26);
+            this.cbTrayOnBorder.Name = "cbTrayOnBorder";
+            this.cbTrayOnBorder.Size = new System.Drawing.Size(85, 17);
+            this.cbTrayOnBorder.TabIndex = 6;
+            this.cbTrayOnBorder.Text = "Draw Border";
+            this.cbTrayOnBorder.UseVisualStyleBackColor = true;
+            // 
+            // btnTrayOnBgColor
+            // 
+            this.btnTrayOnBgColor.Location = new System.Drawing.Point(80, 51);
+            this.btnTrayOnBgColor.Name = "btnTrayOnBgColor";
+            this.btnTrayOnBgColor.Size = new System.Drawing.Size(44, 23);
+            this.btnTrayOnBgColor.TabIndex = 5;
+            this.btnTrayOnBgColor.UseVisualStyleBackColor = true;
+            this.btnTrayOnBgColor.Click += new System.EventHandler(this.btnColour_Click);
+            // 
+            // lblTrayOnBgColor
+            // 
+            this.lblTrayOnBgColor.AutoSize = true;
+            this.lblTrayOnBgColor.Location = new System.Drawing.Point(6, 56);
+            this.lblTrayOnBgColor.Name = "lblTrayOnBgColor";
+            this.lblTrayOnBgColor.Size = new System.Drawing.Size(68, 13);
+            this.lblTrayOnBgColor.TabIndex = 4;
+            this.lblTrayOnBgColor.Text = "Background:";
+            // 
+            // btnTrayOnColor
+            // 
+            this.btnTrayOnColor.Location = new System.Drawing.Point(80, 22);
+            this.btnTrayOnColor.Name = "btnTrayOnColor";
+            this.btnTrayOnColor.Size = new System.Drawing.Size(44, 23);
+            this.btnTrayOnColor.TabIndex = 3;
+            this.btnTrayOnColor.UseVisualStyleBackColor = true;
+            this.btnTrayOnColor.Click += new System.EventHandler(this.btnColour_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 27);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(40, 13);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Colour:";
             // 
             // ConfigurationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 414);
-            this.Controls.Add(this.groupBox5);
+            this.ClientSize = new System.Drawing.Size(330, 492);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfigurationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LogiLockLED Configuration";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -573,12 +810,20 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOsdDurtation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbOsdOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbOsdMargin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbOsdPadding)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbOsdDurtation)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -610,7 +855,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox cbEnable;
         private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox cbOsdEnabled;
         private System.Windows.Forms.ComboBox cbOSDPosition;
@@ -630,6 +874,27 @@
         private System.Windows.Forms.NumericUpDown cbOsdOpacity;
         private System.Windows.Forms.NumericUpDown cbOsdDurtation;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox cbTrayShowScroll;
+        private System.Windows.Forms.CheckBox cbTrayShowCaps;
+        private System.Windows.Forms.CheckBox cbTrayShowNum;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox cbTrayOnTransparent;
+        private System.Windows.Forms.CheckBox cbTrayOnBorder;
+        private System.Windows.Forms.Button btnTrayOnBgColor;
+        private System.Windows.Forms.Label lblTrayOnBgColor;
+        private System.Windows.Forms.Button btnTrayOnColor;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox cbTrayOffTransparent;
+        private System.Windows.Forms.CheckBox cbTrayOffBorder;
+        private System.Windows.Forms.Button btnTrayOffBgColor;
+        private System.Windows.Forms.Label lblTrayOffBgColor;
+        private System.Windows.Forms.Button btnTrayOffColor;
+        private System.Windows.Forms.Label label18;
     }
 }
 

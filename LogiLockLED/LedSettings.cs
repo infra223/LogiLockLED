@@ -13,12 +13,12 @@ namespace LogiLockLED
         public bool EnableNum { get; set; }
         public bool EnableScroll { get; set; }
 
-        public Color CapsOnColour { get; set; }
-        public Color CapsOffColour { get; set; }
-        public Color NumOnColour { get; set; }
-        public Color NumOffColour { get; set; }
-        public Color ScrollOnColour { get; set; }
-        public Color ScrollOffColour { get; set; }
+        public Color CapsOnColor { get; set; }
+        public Color CapsOffColor { get; set; }
+        public Color NumOnColor { get; set; }
+        public Color NumOffColor { get; set; }
+        public Color ScrollOnColor { get; set; }
+        public Color ScrollOffColor { get; set; }
 
         public bool OsdEnabled { get; set; }
         public Font OsdFont { get; set; }
@@ -26,10 +26,21 @@ namespace LogiLockLED
         public int OsdPadding { get; set; }
         public int OsdMargin { get; set; }
         public bool OsdRoundedCorners { get; set; }
-        public Color OsdTextColour { get; set; }
-        public Color OsdBackColour { get; set; }
+        public Color OsdTextColor { get; set; }
+        public Color OsdBackColor { get; set; }
         public int OsdOpacity { get; set; }
         public int OsdDuration { get; set; }
+
+        public bool TrayShowCaps { get; set; }
+        public bool TrayShowNum { get; set; }
+        public bool TrayShowScroll { get; set; }
+        public Color TrayOnColor { get; set; }
+        public Color TrayOnBackColor { get; set; }
+        public bool TrayOnBorder { get; set; }
+        public Color TrayOffColor { get; set; }
+        public Color TrayOffBackColor { get; set; }
+        public bool TrayOffBorder { get; set; }
+
 
         private const string appRegKeyName = "LogiLockLED";
 
@@ -41,12 +52,12 @@ namespace LogiLockLED
             EnableNum =Properties.Settings.Default.EnableNum;
             EnableScroll = Properties.Settings.Default.EnableScroll;
 
-            CapsOnColour = Properties.Settings.Default.CapsOnColour;
-            CapsOffColour = Properties.Settings.Default.CapsOffColour;
-            NumOnColour = Properties.Settings.Default.NumOnColour;
-            NumOffColour = Properties.Settings.Default.NumOffColour;
-            ScrollOnColour = Properties.Settings.Default.ScrollOnColour;
-            ScrollOffColour = Properties.Settings.Default.ScrollOffColour;
+            CapsOnColor = Properties.Settings.Default.CapsOnColour;
+            CapsOffColor = Properties.Settings.Default.CapsOffColour;
+            NumOnColor = Properties.Settings.Default.NumOnColour;
+            NumOffColor = Properties.Settings.Default.NumOffColour;
+            ScrollOnColor = Properties.Settings.Default.ScrollOnColour;
+            ScrollOffColor = Properties.Settings.Default.ScrollOffColour;
 
             AutoStartApp = GetAutoStartSetting();
             OsdEnabled = Properties.Settings.Default.OsdEnabled;
@@ -57,11 +68,22 @@ namespace LogiLockLED
             OsdPadding = Properties.Settings.Default.OsdPadding;
             OsdMargin = Properties.Settings.Default.OsdMargin;
             OsdRoundedCorners = Properties.Settings.Default.OsdRoundedCorners;
-            OsdTextColour = Properties.Settings.Default.OsdTextColour;
-            OsdBackColour = Properties.Settings.Default.OsdBackColour;
+            OsdTextColor = Properties.Settings.Default.OsdTextColour;
+            OsdBackColor = Properties.Settings.Default.OsdBackColour;
             OsdOpacity = Properties.Settings.Default.OsdOpacity;
             OsdDuration = Properties.Settings.Default.OsdDuration;
-        }
+
+            TrayShowCaps = Properties.Settings.Default.TrayShowCaps;
+            TrayShowNum = Properties.Settings.Default.TrayShowNum;
+            TrayShowScroll = Properties.Settings.Default.TrayShowScroll;
+            TrayOnColor = Properties.Settings.Default.TrayOnColor;
+            TrayOnBackColor = Properties.Settings.Default.TrayOnBackColor;
+            TrayOnBorder = Properties.Settings.Default.TrayOnBorder;
+            TrayOffColor = Properties.Settings.Default.TrayOffColor;
+            TrayOffBackColor = Properties.Settings.Default.TrayOffBackColor;
+            TrayOffBorder = Properties.Settings.Default.TrayOffBorder;
+
+    }
 
         public void SaveSettings()
         {
@@ -70,12 +92,12 @@ namespace LogiLockLED
             Properties.Settings.Default.EnableNum = EnableNum;
             Properties.Settings.Default.EnableScroll = EnableScroll;
 
-            Properties.Settings.Default.CapsOnColour = CapsOnColour;
-            Properties.Settings.Default.CapsOffColour = CapsOffColour;
-            Properties.Settings.Default.NumOnColour = NumOnColour; 
-            Properties.Settings.Default.NumOffColour = NumOffColour;
-            Properties.Settings.Default.ScrollOnColour = ScrollOnColour;
-            Properties.Settings.Default.ScrollOffColour = ScrollOffColour;
+            Properties.Settings.Default.CapsOnColour = CapsOnColor;
+            Properties.Settings.Default.CapsOffColour = CapsOffColor;
+            Properties.Settings.Default.NumOnColour = NumOnColor; 
+            Properties.Settings.Default.NumOffColour = NumOffColor;
+            Properties.Settings.Default.ScrollOnColour = ScrollOnColor;
+            Properties.Settings.Default.ScrollOffColour = ScrollOffColor;
 
             Properties.Settings.Default.OsdEnabled = OsdEnabled;
             Properties.Settings.Default.OsdFont = OsdFont;
@@ -83,10 +105,20 @@ namespace LogiLockLED
             Properties.Settings.Default.OsdPadding = OsdPadding;
             Properties.Settings.Default.OsdMargin = OsdMargin;
             Properties.Settings.Default.OsdRoundedCorners = OsdRoundedCorners;
-            Properties.Settings.Default.OsdTextColour = OsdTextColour;
-            Properties.Settings.Default.OsdBackColour = OsdBackColour;
+            Properties.Settings.Default.OsdTextColour = OsdTextColor;
+            Properties.Settings.Default.OsdBackColour = OsdBackColor;
             Properties.Settings.Default.OsdOpacity = OsdOpacity;
             Properties.Settings.Default.OsdDuration = OsdDuration;
+
+            Properties.Settings.Default.TrayShowCaps = TrayShowCaps;
+            Properties.Settings.Default.TrayShowNum = TrayShowNum;
+            Properties.Settings.Default.TrayShowScroll = TrayShowScroll;
+            Properties.Settings.Default.TrayOnColor = TrayOnColor;
+            Properties.Settings.Default.TrayOnBackColor = TrayOnBackColor;
+            Properties.Settings.Default.TrayOnBorder = TrayOnBorder;
+            Properties.Settings.Default.TrayOffColor = TrayOffColor;
+            Properties.Settings.Default.TrayOffBackColor = TrayOffBackColor;
+            Properties.Settings.Default.TrayOffBorder = TrayOffBorder;
 
             Properties.Settings.Default.Save();
 

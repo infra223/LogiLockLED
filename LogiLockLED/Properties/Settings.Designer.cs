@@ -262,5 +262,113 @@ namespace LogiLockLED.Properties {
                 this["OsdDuration"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color TrayOnColor {
+            get {
+                return ((global::System.Drawing.Color)(this["TrayOnColor"]));
+            }
+            set {
+                this["TrayOnColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lime")]
+        public global::System.Drawing.Color TrayOnBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["TrayOnBackColor"]));
+            }
+            set {
+                this["TrayOnBackColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TrayOnBorder {
+            get {
+                return ((bool)(this["TrayOnBorder"]));
+            }
+            set {
+                this["TrayOnBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Gray")]
+        public global::System.Drawing.Color TrayOffColor {
+            get {
+                return ((global::System.Drawing.Color)(this["TrayOffColor"]));
+            }
+            set {
+                this["TrayOffColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Transparent")]
+        public global::System.Drawing.Color TrayOffBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["TrayOffBackColor"]));
+            }
+            set {
+                this["TrayOffBackColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TrayOffBorder {
+            get {
+                return ((bool)(this["TrayOffBorder"]));
+            }
+            set {
+                this["TrayOffBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TrayShowCaps {
+            get {
+                return ((bool)(this["TrayShowCaps"]));
+            }
+            set {
+                this["TrayShowCaps"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TrayShowNum {
+            get {
+                return ((bool)(this["TrayShowNum"]));
+            }
+            set {
+                this["TrayShowNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TrayShowScroll {
+            get {
+                return ((bool)(this["TrayShowScroll"]));
+            }
+            set {
+                this["TrayShowScroll"] = value;
+            }
+        }
     }
 }

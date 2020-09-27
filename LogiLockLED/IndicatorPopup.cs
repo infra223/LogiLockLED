@@ -40,21 +40,12 @@ namespace LogiLockLED
 
         public void ShowLockState(LockKey lockKey, bool state)
         {
-            //cornerTR.Location = new Point(0, 0);
-            //cornerBR.Location = new Point(0, 0);
-
             lblLockText.Text = lockKey.ToString() + ": " + (state ? "On" : "Off");
-            //lblLockText.AutoSize = false;
-            //lblLockText.Width = 50;
-            //this.Width = 50;
-            //lblLockText.AutoSize = true;
-            
 
             cornerTL.Location = new Point(0, 0);
             cornerBL.Location = new Point(0,  this.Height-cornerBL.Height);
             cornerTR.Location = new Point(this.Width - cornerTR.Width, 0);
             cornerBR.Location = new Point(this.Width - cornerBR.Width, this.Height - cornerBR.Height);
-
 
             MoveIntoPosition();
             
@@ -100,8 +91,8 @@ namespace LogiLockLED
             this.Padding = new Padding(settings.OsdPadding, settings.OsdPadding, settings.OsdPadding, (int)(settings.OsdPadding)+4);
             this.OuterMargin = settings.OsdMargin;
 
-            lblLockText.ForeColor = settings.OsdTextColour;
-            this.BackColor = settings.OsdBackColour;
+            lblLockText.ForeColor = settings.OsdTextColor;
+            this.BackColor = settings.OsdBackColor;
             this.Opacity = settings.OsdOpacity / 100d;
             hideTimer.Interval = settings.OsdDuration;
         }

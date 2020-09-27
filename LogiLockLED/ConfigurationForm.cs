@@ -30,50 +30,26 @@ namespace LogiLockLED
             if (colorDialog.ShowDialog(this) == DialogResult.OK)
             {
                 (sender as Button).BackColor = colorDialog.Color;
-                SetSettingValue(sender, colorDialog.Color);
             }
             
         }
 
-        private void SetSettingValue(object sender, Color color)
-        {
-            if (sender == btnCapsOffColour)
-                ledSettings.CapsOffColour = color;
-            if (sender == btnCapsOnColour)
-                ledSettings.CapsOnColour = color;
-
-            if (sender == btnNumOffColour)
-                ledSettings.NumOffColour = color;
-            if (sender == btnNumOnColour)
-                ledSettings.NumOnColour = color;
-
-            if (sender == btnScrollOffColour)
-                ledSettings.ScrollOffColour = color;
-            if (sender == btnScrollOnColour)
-                ledSettings.ScrollOnColour = color;
-
-            if (sender == btnOsdTxtColour)
-                ledSettings.OsdTextColour = color == Color.Black ? Color.FromArgb(3, 3, 3) : color;
-            if (sender == btnOsdBkColour)
-                ledSettings.OsdBackColour = color == Color.Black ? Color.FromArgb(3, 3, 3) : color;
-
-        }
 
         private void PopulateSettingsToUI()
         {
             cbEnable.Checked = ledSettings.EnableKeyLockLEDs;
 
             cbEnableCaps.Checked = ledSettings.EnableCaps;
-            btnCapsOffColour.BackColor = ledSettings.CapsOffColour;
-            btnCapsOnColour.BackColor = ledSettings.CapsOnColour;
+            btnCapsOffColour.BackColor = ledSettings.CapsOffColor;
+            btnCapsOnColour.BackColor = ledSettings.CapsOnColor;
 
             cbEnableNum.Checked = ledSettings.EnableNum;
-            btnNumOffColour.BackColor = ledSettings.NumOffColour;
-            btnNumOnColour.BackColor = ledSettings.NumOnColour;
+            btnNumOffColour.BackColor = ledSettings.NumOffColor;
+            btnNumOnColour.BackColor = ledSettings.NumOnColor;
 
             cbEnableScroll.Checked = ledSettings.EnableScroll;
-            btnScrollOffColour.BackColor = ledSettings.ScrollOffColour;
-            btnScrollOnColour.BackColor = ledSettings.ScrollOnColour;
+            btnScrollOffColour.BackColor = ledSettings.ScrollOffColor;
+            btnScrollOnColour.BackColor = ledSettings.ScrollOnColor;
 
             cbAutoStartApp.Checked = ledSettings.AutoStartApp;
 
@@ -84,14 +60,36 @@ namespace LogiLockLED
             cbOsdPadding.Value = ledSettings.OsdPadding;
             cbOsdMargin.Value = ledSettings.OsdMargin;
             cbOsdRoundedCorners.Checked = ledSettings.OsdRoundedCorners;
-            btnOsdTxtColour.BackColor = ledSettings.OsdTextColour;
-            btnOsdBkColour.BackColor = ledSettings.OsdBackColour;
+            btnOsdTxtColour.BackColor = ledSettings.OsdTextColor;
+            btnOsdBkColour.BackColor = ledSettings.OsdBackColor;
             cbOsdOpacity.Value = ledSettings.OsdOpacity;
             cbOsdDurtation.Value = ledSettings.OsdDuration;
+
+            cbTrayShowNum.Checked = ledSettings.TrayShowNum;
+            cbTrayShowCaps.Checked = ledSettings.TrayShowCaps;
+            cbTrayShowScroll.Checked = ledSettings.TrayShowScroll;
+
+            btnTrayOnColor.BackColor = ledSettings.TrayOnColor;
+            btnTrayOnBgColor.BackColor = ledSettings.TrayOnBackColor;
+            btnTrayOffColor.BackColor = ledSettings.TrayOffColor;
+            btnTrayOffBgColor.BackColor = ledSettings.TrayOffBackColor;
+
+            cbTrayOnTransparent.Checked = ledSettings.TrayOnBackColor == Color.Transparent;
+            cbTrayOffTransparent.Checked = ledSettings.TrayOffBackColor == Color.Transparent;
+            cbTrayOnBorder.Checked = ledSettings.TrayOnBorder;
+            cbTrayOffBorder.Checked = ledSettings.TrayOffBorder;
         }
 
         private void ApplySettings()
         {
+            ledSettings.EnableKeyLockLEDs = cbEnable.Checked;
+            ledSettings.AutoStartApp = cbAutoStartApp.Checked;
+
+            ledSettings.EnableCaps = cbEnableCaps.Checked;
+            ledSettings.EnableNum = cbEnableNum.Checked;
+            ledSettings.EnableScroll = cbEnableScroll.Checked;
+            
+
             ledSettings.OsdEnabled = cbOsdEnabled.Checked;
             ledSettings.OsdPosition = (OSDPosition)cbOSDPosition.SelectedItem;
             ledSettings.OsdPadding = (int)cbOsdPadding.Value;
@@ -99,6 +97,27 @@ namespace LogiLockLED
             ledSettings.OsdRoundedCorners = cbOsdRoundedCorners.Checked;
             ledSettings.OsdOpacity = (int)cbOsdOpacity.Value;
             ledSettings.OsdDuration = (int)cbOsdDurtation.Value;
+            ledSettings.CapsOffColor = btnCapsOffColour.BackColor;
+            ledSettings.CapsOnColor = btnCapsOnColour.BackColor;
+            ledSettings.NumOffColor = btnNumOffColour.BackColor;
+            ledSettings.NumOnColor = btnNumOnColour.BackColor;
+            ledSettings.ScrollOffColor = btnScrollOffColour.BackColor;
+            ledSettings.ScrollOnColor = btnScrollOnColour.BackColor;
+            ledSettings.OsdTextColor = btnOsdTxtColour.BackColor == Color.Black ? Color.FromArgb(3, 3, 3) : btnOsdTxtColour.BackColor;
+            ledSettings.OsdBackColor = btnOsdBkColour.BackColor == Color.Black ? Color.FromArgb(3, 3, 3) : btnOsdBkColour.BackColor;
+
+
+            ledSettings.TrayShowNum = cbTrayShowNum.Checked;
+            ledSettings.TrayShowCaps = cbTrayShowCaps.Checked;
+            ledSettings.TrayShowScroll = cbTrayShowScroll.Checked;
+
+            ledSettings.TrayOnColor = btnTrayOnColor.BackColor;
+            ledSettings.TrayOnBackColor = cbTrayOnTransparent.Checked ? Color.Transparent : btnTrayOnBgColor.BackColor;
+            ledSettings.TrayOffColor = btnTrayOffColor.BackColor;
+            ledSettings.TrayOffBackColor = cbTrayOffTransparent.Checked ? Color.Transparent : btnTrayOffBgColor.BackColor;
+
+            ledSettings.TrayOnBorder = cbTrayOnBorder.Checked;
+            ledSettings.TrayOffBorder = cbTrayOffBorder.Checked;
 
             ledSettings.SaveSettings();
             SettingsUpdated?.Invoke(this, new EventArgs());
@@ -122,31 +141,6 @@ namespace LogiLockLED
             this.Close();
         }
 
-        private void cbEnableCaps_CheckedChanged(object sender, EventArgs e)
-        {
-            ledSettings.EnableCaps = cbEnableCaps.Checked;
-        }
-
-        private void cbEnableNum_CheckedChanged(object sender, EventArgs e)
-        {
-            ledSettings.EnableNum = cbEnableNum.Checked;
-        }
-
-        private void cbEnableScroll_CheckedChanged(object sender, EventArgs e)
-        {
-            ledSettings.EnableScroll = cbEnableScroll.Checked;
-        }
-
-        private void cbEnable_CheckedChanged(object sender, EventArgs e)
-        {
-            ledSettings.EnableKeyLockLEDs = cbEnable.Checked;
-        }
-
-        private void cbAutoStartApp_CheckedChanged(object sender, EventArgs e)
-        {
-            ledSettings.AutoStartApp = cbAutoStartApp.Checked;
-        }
-
         private void btnFont_Click(object sender, EventArgs e)
         {
             if( fontDialog.ShowDialog(this) == DialogResult.OK)
@@ -154,6 +148,18 @@ namespace LogiLockLED
                 ledSettings.OsdFont = fontDialog.Font;
                 btnOsdFont.Text = ledSettings.OsdFont.SizeInPoints.ToString() + ", " + ledSettings.OsdFont.FontFamily.Name;
             }                       
+        }
+
+        private void cbTrayOnTransparent_CheckedChanged(object sender, EventArgs e)
+        {
+            btnTrayOnBgColor.Enabled = !cbTrayOnTransparent.Checked;
+            
+        }
+
+        private void cbTrayOffTransparent_CheckedChanged(object sender, EventArgs e)
+        {
+            btnTrayOffBgColor.Enabled = !cbTrayOffTransparent.Checked;
+            
         }
     }
 }
