@@ -41,6 +41,7 @@ LogiLockLED allows for a number of customizations and tweaks in the configuratio
 - In G Hub: select or create a "FREESTYLE" colour scheme for your keyboard. This will not work with any animated schemes.
 - Enable LogiLockLED or restart it to apply the key lock LEDs on top of the freestyle colour scheme.
 
+If you are using your keyboard with game profiles it is advised to disable this application while playing games.  If not, LogiLockLED might change key back light values while in game and G Hub might ignore the game profile, which might not be preferable.
 
 #### Note
 This application makes use of Logitech's LED ILLUMINATION SDK that can be downloaded from their website: https://www.logitechg.com/en-us/innovation/developer-lab.html. 
