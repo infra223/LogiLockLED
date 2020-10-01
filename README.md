@@ -16,9 +16,29 @@ https://github.com/infra223/LogiLockLED/releases
 
 
 # How to use
+Download and install the latest release of the application : https://github.com/infra223/LogiLockLED/releases 
+
+When the application start it will show an icon in the notification area, also known as the system tray.  By default it will also show the Caps and Num lock icons.
+
+The default Windows 10 behaviour is to hide icons in the notification area after some time.  If you want the icons to be permanently visible, follow the following steps:
+- Right click on a blank area of the taskbar to show a context menu.
+- Select the “Taskbar settings” option to show the Taskbar settings window.
+- Scroll down until you see the “Notification area” section.   Click on the “Select which icons appear on the taskbar” item, which will show a list of icons that appeared in the notification area.
+- Find the “LogiLockLED” item in the list and turn it on.
+
+### Configuration:
+LogiLockLED allows for a number of customizations and tweaks in the configuration window:
+- Right click on the LogiLockLED icon in the notification area / system tray and click “Configuration”
+- The configuration window has a General Settings  area for global settings
+- Below that there is a number of tabs for configuring notifications
+  - Key Back Light: Settings for Logitech backlit keyboards
+  - On-Screen Display: Look and feel settings for the OSD window
+  - System Tray Indicators: Settings for key lock icons in the notification area
+
+### Logitech back light integration:
 - Install G Hub and ensure your keyboard is accessible
-- If you already have LogiLockLED installed and running, disable it by exiting the application or unchecking the "Enable Key Lock LEDs" setting in the configuration window and apply the change. 
-- In G Hub: select a "FREESTYLE" colour scheme for your keyboard.  This will not work with animated schemes.
+- If you already have LogiLockLED installed and running, disable it by exiting the application or unchecking the "Enable Key Lock LEDs" setting in the configuration window and apply the change.
+- In G Hub: select or create a "FREESTYLE" colour scheme for your keyboard. This will not work with any animated schemes.
 - Enable LogiLockLED or restart it to apply the key lock LEDs on top of the freestyle colour scheme.
 
 
