@@ -36,12 +36,14 @@ LogiLockLED allows for a number of customizations and tweaks in the configuratio
   - System Tray Indicators: Settings for key lock icons in the notification area
 
 ### Logitech back light integration:
+***Important: If you want to make changes to the light scheme used in G HUB, you need to disable LogiLockLED first (see below)***
+
 - Install G Hub and ensure your keyboard is accessible
 - If you already have LogiLockLED installed and running, disable it by exiting the application or unchecking the "Enable Key Lock LEDs" setting in the configuration window and apply the change.
 - In G Hub: select or create a "FREESTYLE" colour scheme for your keyboard. This will not work with any animated schemes.
 - Enable LogiLockLED or restart it to apply the key lock LEDs on top of the freestyle colour scheme.
 
-If you are using your keyboard with game profiles it is advised to disable this application while playing games.  If not, LogiLockLED might change key back light values while in game and G Hub might ignore the game profile, which might not be preferable.
+If you are using your keyboard with game profiles it is advised to disable this application while playing games.  If not, LogiLockLED might change key back light values while in game and G Hub might ignore the game profile, which might not be preferable.  Quickest way to disable is to right click on the LogiLockLED icon in the notification area and uncheck the "Enabled" menu item.  Just remember to enable it again when you are done.
 
 #### Note
 This application makes use of Logitech's LED ILLUMINATION SDK that can be downloaded from their website: https://www.logitechg.com/en-us/innovation/developer-lab.html. 
