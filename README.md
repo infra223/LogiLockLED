@@ -1,7 +1,13 @@
 # LogiLockLED
-Application to light up Lock Keys (Num, Caps or Scroll Lock) depending on state.  This is compatible with Logitech Gaming Keyboards and requires G Hub to be installed and running.
+LogiLockLED is a system tray application that makes it easier to monitor Num, Caps and Scroll lock states.  Some modern keyboards and laptops do not have indicator lights for some of these keys and could cause frustration.  This is where LogiLockLED can help.
 
-A customizable On-Screen Display is available to visually indicate lock changes on screen.
+LogiLockLED has three ways to make life easier for you:
+- On-Screen display shows up when any of the locks are triggered
+- System tray icons shows key lock states
+- Users of backlit Logitech keyboards can illuminate the lock keys in different colors based on lock state.
+- You can choose which lock keys should be monitored
+
+Multitude of configuration options are available to disable/enable features and adjust the look and feel of the notifications and icons.  The application can easily be enabled or disabled from the context menu on the main system tray icon.
 
 
 # Releases
