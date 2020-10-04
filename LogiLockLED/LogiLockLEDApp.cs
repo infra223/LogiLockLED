@@ -63,7 +63,7 @@ namespace LogiLockLED
             var args = (e as KeylockChangeArgs);
             if (ledSettings.OsdEnabled)
             {
-                popupWindow.Invoke(new Action<LockKey, bool>(popupWindow.ShowLockState), args.LockKey, args.IsOn);
+                popupWindow.Invoke(new Action<LockKey, bool>(popupWindow.ShowLockState), args.LockKey, args.IsOn);                
             }
 
             appCon.Post(new SendOrPostCallback((o) => {
@@ -96,6 +96,7 @@ namespace LogiLockLED
             ledSettings.SaveSettings();
             PropagateSettings();            
             configEnableItem.Checked = ledSettings.EnableKeyLockLEDs;
+            popupWindow.ShowMessage((ledSettings.EnableKeyLockLEDs ? "Enabled" : "Disabled"));
         }
 
         private void PropagateSettings()

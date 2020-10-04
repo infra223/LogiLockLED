@@ -370,5 +370,41 @@ namespace LogiLockLED.Properties {
                 this["TrayShowScroll"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OsdShowNum {
+            get {
+                return ((bool)(this["OsdShowNum"]));
+            }
+            set {
+                this["OsdShowNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OsdShowCaps {
+            get {
+                return ((bool)(this["OsdShowCaps"]));
+            }
+            set {
+                this["OsdShowCaps"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OsdShowScroll {
+            get {
+                return ((bool)(this["OsdShowScroll"]));
+            }
+            set {
+                this["OsdShowScroll"] = value;
+            }
+        }
     }
 }

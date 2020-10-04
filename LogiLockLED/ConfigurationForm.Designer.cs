@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigurationForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbEnableCaps = new System.Windows.Forms.CheckBox();
@@ -94,6 +95,12 @@
             this.lblTrayOnBgColor = new System.Windows.Forms.Label();
             this.btnTrayOnColor = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.cbOSDShowNum = new System.Windows.Forms.CheckBox();
+            this.cbOSDShowCaps = new System.Windows.Forms.CheckBox();
+            this.cbOSDShowScroll = new System.Windows.Forms.CheckBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -108,6 +115,8 @@
             this.tabPage3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -173,7 +182,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(220, 463);
+            this.btnClose.Location = new System.Drawing.Point(220, 486);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(103, 23);
             this.btnClose.TabIndex = 3;
@@ -335,7 +344,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.Location = new System.Drawing.Point(12, 463);
+            this.btnCancel.Location = new System.Drawing.Point(12, 486);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 8;
@@ -346,7 +355,7 @@
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(121, 463);
+            this.btnApply.Location = new System.Drawing.Point(121, 486);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(93, 23);
             this.btnApply.TabIndex = 9;
@@ -493,7 +502,7 @@
             // 
             this.btnOsdFont.Location = new System.Drawing.Point(70, 143);
             this.btnOsdFont.Name = "btnOsdFont";
-            this.btnOsdFont.Size = new System.Drawing.Size(121, 23);
+            this.btnOsdFont.Size = new System.Drawing.Size(211, 23);
             this.btnOsdFont.TabIndex = 4;
             this.btnOsdFont.Text = "Font";
             this.btnOsdFont.UseVisualStyleBackColor = true;
@@ -545,31 +554,31 @@
             // cbTrayShowNum
             // 
             this.cbTrayShowNum.AutoSize = true;
-            this.cbTrayShowNum.Location = new System.Drawing.Point(19, 18);
+            this.cbTrayShowNum.Location = new System.Drawing.Point(9, 19);
             this.cbTrayShowNum.Name = "cbTrayShowNum";
-            this.cbTrayShowNum.Size = new System.Drawing.Size(105, 17);
+            this.cbTrayShowNum.Size = new System.Drawing.Size(75, 17);
             this.cbTrayShowNum.TabIndex = 0;
-            this.cbTrayShowNum.Text = "Show Num Lock";
+            this.cbTrayShowNum.Text = "Num Lock";
             this.cbTrayShowNum.UseVisualStyleBackColor = true;
             // 
             // cbTrayShowCaps
             // 
             this.cbTrayShowCaps.AutoSize = true;
-            this.cbTrayShowCaps.Location = new System.Drawing.Point(19, 41);
+            this.cbTrayShowCaps.Location = new System.Drawing.Point(90, 19);
             this.cbTrayShowCaps.Name = "cbTrayShowCaps";
-            this.cbTrayShowCaps.Size = new System.Drawing.Size(107, 17);
+            this.cbTrayShowCaps.Size = new System.Drawing.Size(77, 17);
             this.cbTrayShowCaps.TabIndex = 1;
-            this.cbTrayShowCaps.Text = "Show Caps Lock";
+            this.cbTrayShowCaps.Text = "Caps Lock";
             this.cbTrayShowCaps.UseVisualStyleBackColor = true;
             // 
             // cbTrayShowScroll
             // 
             this.cbTrayShowScroll.AutoSize = true;
-            this.cbTrayShowScroll.Location = new System.Drawing.Point(19, 64);
+            this.cbTrayShowScroll.Location = new System.Drawing.Point(173, 19);
             this.cbTrayShowScroll.Name = "cbTrayShowScroll";
-            this.cbTrayShowScroll.Size = new System.Drawing.Size(109, 17);
+            this.cbTrayShowScroll.Size = new System.Drawing.Size(79, 17);
             this.cbTrayShowScroll.TabIndex = 2;
-            this.cbTrayShowScroll.Text = "Show Scroll Lock";
+            this.cbTrayShowScroll.Text = "Scroll Lock";
             this.cbTrayShowScroll.UseVisualStyleBackColor = true;
             // 
             // tabControl1
@@ -584,7 +593,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(311, 355);
+            this.tabControl1.Size = new System.Drawing.Size(311, 378);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -595,13 +604,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(303, 329);
+            this.tabPage1.Size = new System.Drawing.Size(303, 352);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Key Backlight";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox8);
             this.tabPage2.Controls.Add(this.cbOsdDurtation);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.cbOsdEnabled);
@@ -623,22 +633,20 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(303, 329);
+            this.tabPage2.Size = new System.Drawing.Size(303, 352);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "On-Screen Display";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.groupBox6);
             this.tabPage3.Controls.Add(this.groupBox5);
-            this.tabPage3.Controls.Add(this.cbTrayShowScroll);
-            this.tabPage3.Controls.Add(this.cbTrayShowNum);
-            this.tabPage3.Controls.Add(this.cbTrayShowCaps);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(303, 329);
+            this.tabPage3.Size = new System.Drawing.Size(303, 352);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "System Tray Indicators";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -651,9 +659,9 @@
             this.groupBox6.Controls.Add(this.lblTrayOffBgColor);
             this.groupBox6.Controls.Add(this.btnTrayOffColor);
             this.groupBox6.Controls.Add(this.label18);
-            this.groupBox6.Location = new System.Drawing.Point(19, 185);
+            this.groupBox6.Location = new System.Drawing.Point(19, 174);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(236, 91);
+            this.groupBox6.Size = new System.Drawing.Size(264, 91);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Off Icon Style";
@@ -723,9 +731,9 @@
             this.groupBox5.Controls.Add(this.lblTrayOnBgColor);
             this.groupBox5.Controls.Add(this.btnTrayOnColor);
             this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Location = new System.Drawing.Point(19, 88);
+            this.groupBox5.Location = new System.Drawing.Point(19, 77);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(236, 91);
+            this.groupBox5.Size = new System.Drawing.Size(264, 91);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "On Icon Style";
@@ -787,11 +795,65 @@
             this.label15.TabIndex = 2;
             this.label15.Text = "Colour:";
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.cbTrayShowNum);
+            this.groupBox7.Controls.Add(this.cbTrayShowCaps);
+            this.groupBox7.Controls.Add(this.cbTrayShowScroll);
+            this.groupBox7.Location = new System.Drawing.Point(19, 17);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(264, 54);
+            this.groupBox7.TabIndex = 9;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Show Icons";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.cbOSDShowNum);
+            this.groupBox8.Controls.Add(this.cbOSDShowCaps);
+            this.groupBox8.Controls.Add(this.cbOSDShowScroll);
+            this.groupBox8.Location = new System.Drawing.Point(17, 292);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(264, 54);
+            this.groupBox8.TabIndex = 18;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Show OSD";
+            // 
+            // cbOSDShowNum
+            // 
+            this.cbOSDShowNum.AutoSize = true;
+            this.cbOSDShowNum.Location = new System.Drawing.Point(9, 19);
+            this.cbOSDShowNum.Name = "cbOSDShowNum";
+            this.cbOSDShowNum.Size = new System.Drawing.Size(75, 17);
+            this.cbOSDShowNum.TabIndex = 0;
+            this.cbOSDShowNum.Text = "Num Lock";
+            this.cbOSDShowNum.UseVisualStyleBackColor = true;
+            // 
+            // cbOSDShowCaps
+            // 
+            this.cbOSDShowCaps.AutoSize = true;
+            this.cbOSDShowCaps.Location = new System.Drawing.Point(90, 19);
+            this.cbOSDShowCaps.Name = "cbOSDShowCaps";
+            this.cbOSDShowCaps.Size = new System.Drawing.Size(77, 17);
+            this.cbOSDShowCaps.TabIndex = 1;
+            this.cbOSDShowCaps.Text = "Caps Lock";
+            this.cbOSDShowCaps.UseVisualStyleBackColor = true;
+            // 
+            // cbOSDShowScroll
+            // 
+            this.cbOSDShowScroll.AutoSize = true;
+            this.cbOSDShowScroll.Location = new System.Drawing.Point(173, 19);
+            this.cbOSDShowScroll.Name = "cbOSDShowScroll";
+            this.cbOSDShowScroll.Size = new System.Drawing.Size(79, 17);
+            this.cbOSDShowScroll.TabIndex = 2;
+            this.cbOSDShowScroll.Text = "Scroll Lock";
+            this.cbOSDShowScroll.UseVisualStyleBackColor = true;
+            // 
             // ConfigurationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 492);
+            this.ClientSize = new System.Drawing.Size(330, 515);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnCancel);
@@ -819,11 +881,14 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -895,6 +960,12 @@
         private System.Windows.Forms.Label lblTrayOffBgColor;
         private System.Windows.Forms.Button btnTrayOffColor;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.CheckBox cbOSDShowNum;
+        private System.Windows.Forms.CheckBox cbOSDShowCaps;
+        private System.Windows.Forms.CheckBox cbOSDShowScroll;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

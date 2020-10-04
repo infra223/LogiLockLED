@@ -16,6 +16,10 @@ namespace LogiLockLED
         public OSDPosition Position { get; private set; }
         public int OuterMargin { get; private set; }
 
+        private bool showNum;
+        private bool showCaps;
+        private bool showScroll;
+
         protected override bool ShowWithoutActivation
         {
             get { return true; }
@@ -40,16 +44,26 @@ namespace LogiLockLED
 
         public void ShowLockState(LockKey lockKey, bool state)
         {
-            lblLockText.Text = lockKey.ToString() + ": " + (state ? "On" : "Off");
+            if ((lockKey == LockKey.Num && showNum) ||
+                (lockKey == LockKey.Caps && showCaps) ||
+                (lockKey == LockKey.Scroll && showScroll))
+            {
+                ShowMessage(lockKey.ToString() + ": " + (state ? "On" : "Off"));
+            }
+        }
+
+        public void ShowMessage(string msg)
+        {
+            lblLockText.Text = msg;
 
             cornerTL.Location = new Point(0, 0);
-            cornerBL.Location = new Point(0,  this.Height-cornerBL.Height);
+            cornerBL.Location = new Point(0, this.Height - cornerBL.Height);
             cornerTR.Location = new Point(this.Width - cornerTR.Width, 0);
             cornerBR.Location = new Point(this.Width - cornerBR.Width, this.Height - cornerBR.Height);
 
             MoveIntoPosition();
-            
-            ShowInactiveTopmost(this);            
+
+            ShowInactiveTopmost(this);
             hideTimer.Stop();
             hideTimer.Start();
         }
@@ -86,6 +100,10 @@ namespace LogiLockLED
             cornerTR.Visible = settings.OsdRoundedCorners;
             cornerBL.Visible = settings.OsdRoundedCorners;
             cornerBR.Visible = settings.OsdRoundedCorners;
+
+            showNum = settings.OsdShowNum;
+            showCaps = settings.OsdShowCaps;
+            showScroll = settings.OsdShowScroll;
 
             Position = settings.OsdPosition;
             this.Padding = new Padding(settings.OsdPadding, settings.OsdPadding, settings.OsdPadding, (int)(settings.OsdPadding)+4);

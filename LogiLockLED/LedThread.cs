@@ -38,6 +38,11 @@ namespace LogiLockLED
         {
             if (ledSettings.EnableKeyLockLEDs)
             {
+                _ledApiInit = LogitechGSDK.LogiLedInit();
+                LogitechGSDK.LogiLedSetTargetDevice(LogitechGSDK.LOGI_DEVICETYPE_PERKEY_RGB);
+                LogitechGSDK.LogiLedSaveCurrentLighting();
+                LogitechGSDK.LogiLedStopEffects();
+
                 if (thread == null || thread.ThreadState != ThreadState.Running)
                 {
                     thread = new Thread(ThreadMain);
@@ -53,6 +58,7 @@ namespace LogiLockLED
             thread?.Abort();
             if (_ledApiInit)
             {
+                LogitechGSDK.LogiLedRestoreLighting();
                 LogitechGSDK.LogiLedShutdown();
                 _ledApiInit = false;
             }
@@ -78,15 +84,13 @@ namespace LogiLockLED
 
         private void ThreadMain()
         {
-            _ledApiInit = LogitechGSDK.LogiLedInit();
             bool prevCapsLock = (((ushort)GetKeyState(0x14)) & 0xffff) == 0;
             bool prevNumLock = (((ushort)GetKeyState(0x90)) & 0xffff) == 0;
             bool prevScrollLock = (((ushort)GetKeyState(0x91)) & 0xffff) == 0;
             bool firstLoop = true;
 
             while (!stopThread)
-            {
-
+            { 
                 bool CapsLock = (((ushort)GetKeyState(0x14)) & 0xffff) != 0;
                 bool NumLock = (((ushort)GetKeyState(0x90)) & 0xffff) != 0;
                 bool ScrollLock = (((ushort)GetKeyState(0x91)) & 0xffff) != 0;
@@ -141,9 +145,8 @@ namespace LogiLockLED
                 refreshRequired = false;
                 firstLoop = false;
                 Thread.Sleep(75);                              
-            }
-
-            //LogitechGSDK.LogiLedShutdown();
+            }           
+            
         }
 
         private static bool LogiLedSetLightingForKeyWithKeyName(keyboardNames keyCode, System.Drawing.Color color)

@@ -30,6 +30,10 @@ namespace LogiLockLED
         public Color OsdBackColor { get; set; }
         public int OsdOpacity { get; set; }
         public int OsdDuration { get; set; }
+        public bool OsdShowNum { get; set; }
+        public bool OsdShowCaps { get; set; }
+        public bool OsdShowScroll { get; set; }
+
 
         public bool TrayShowCaps { get; set; }
         public bool TrayShowNum { get; set; }
@@ -72,6 +76,9 @@ namespace LogiLockLED
             OsdBackColor = Properties.Settings.Default.OsdBackColour;
             OsdOpacity = Properties.Settings.Default.OsdOpacity;
             OsdDuration = Properties.Settings.Default.OsdDuration;
+            OsdShowNum = Properties.Settings.Default.OsdShowNum;
+            OsdShowCaps = Properties.Settings.Default.OsdShowCaps;
+            OsdShowScroll = Properties.Settings.Default.OsdShowScroll;
 
             TrayShowCaps = Properties.Settings.Default.TrayShowCaps;
             TrayShowNum = Properties.Settings.Default.TrayShowNum;
@@ -109,6 +116,9 @@ namespace LogiLockLED
             Properties.Settings.Default.OsdBackColour = OsdBackColor;
             Properties.Settings.Default.OsdOpacity = OsdOpacity;
             Properties.Settings.Default.OsdDuration = OsdDuration;
+            Properties.Settings.Default.OsdShowNum = OsdShowNum;
+            Properties.Settings.Default.OsdShowCaps  = OsdShowCaps;
+            Properties.Settings.Default.OsdShowScroll = OsdShowScroll;
 
             Properties.Settings.Default.TrayShowCaps = TrayShowCaps;
             Properties.Settings.Default.TrayShowNum = TrayShowNum;

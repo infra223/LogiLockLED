@@ -10,9 +10,7 @@ namespace LogiLockLED
     public partial class ConfigurationForm : Form
     {
         private readonly LedSettings ledSettings;
-        public event EventHandler SettingsUpdated;        
-
-        
+        public event EventHandler SettingsUpdated;                     
 
         public ConfigurationForm(ref LedSettings settings)
         {
@@ -55,7 +53,7 @@ namespace LogiLockLED
 
             cbOsdEnabled.Checked = ledSettings.OsdEnabled;
             cbOSDPosition.SelectedItem = ledSettings.OsdPosition;
-            btnOsdFont.Text = ledSettings.OsdFont.SizeInPoints.ToString() + ", " + ledSettings.OsdFont.FontFamily.Name;
+            setFontButtonText();
             fontDialog.Font = ledSettings.OsdFont;
             cbOsdPadding.Value = ledSettings.OsdPadding;
             cbOsdMargin.Value = ledSettings.OsdMargin;
@@ -64,6 +62,9 @@ namespace LogiLockLED
             btnOsdBkColour.BackColor = ledSettings.OsdBackColor;
             cbOsdOpacity.Value = ledSettings.OsdOpacity;
             cbOsdDurtation.Value = ledSettings.OsdDuration;
+            cbOSDShowNum.Checked = ledSettings.OsdShowNum;
+            cbOSDShowCaps.Checked = ledSettings.OsdShowCaps;
+            cbOSDShowScroll.Checked = ledSettings.OsdShowScroll;
 
             cbTrayShowNum.Checked = ledSettings.TrayShowNum;
             cbTrayShowCaps.Checked = ledSettings.TrayShowCaps;
@@ -105,7 +106,9 @@ namespace LogiLockLED
             ledSettings.ScrollOnColor = btnScrollOnColour.BackColor;
             ledSettings.OsdTextColor = btnOsdTxtColour.BackColor == Color.Black ? Color.FromArgb(3, 3, 3) : btnOsdTxtColour.BackColor;
             ledSettings.OsdBackColor = btnOsdBkColour.BackColor == Color.Black ? Color.FromArgb(3, 3, 3) : btnOsdBkColour.BackColor;
-
+            ledSettings.OsdShowNum = cbOSDShowNum.Checked;
+            ledSettings.OsdShowCaps = cbOSDShowCaps.Checked;
+            ledSettings.OsdShowScroll = cbOSDShowScroll.Checked;
 
             ledSettings.TrayShowNum = cbTrayShowNum.Checked;
             ledSettings.TrayShowCaps = cbTrayShowCaps.Checked;
@@ -146,20 +149,26 @@ namespace LogiLockLED
             if( fontDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ledSettings.OsdFont = fontDialog.Font;
-                btnOsdFont.Text = ledSettings.OsdFont.SizeInPoints.ToString() + ", " + ledSettings.OsdFont.FontFamily.Name;
+                setFontButtonText();
             }                       
+        }
+
+        private void setFontButtonText()
+        {
+            btnOsdFont.Text = ledSettings.OsdFont.FontFamily.Name + " " + Math.Round(ledSettings.OsdFont.SizeInPoints) + "pt" + (ledSettings.OsdFont.Style != FontStyle.Regular ? " (" + ledSettings.OsdFont.Style + ")" : "");            
+            toolTip.SetToolTip(btnOsdFont, btnOsdFont.Text);
+            var buttonFont = new Font(ledSettings.OsdFont.FontFamily, 9 ,ledSettings.OsdFont.Style, ledSettings.OsdFont.Unit);
+            btnOsdFont.Font = buttonFont;
         }
 
         private void cbTrayOnTransparent_CheckedChanged(object sender, EventArgs e)
         {
-            btnTrayOnBgColor.Enabled = !cbTrayOnTransparent.Checked;
-            
+            btnTrayOnBgColor.Visible = !cbTrayOnTransparent.Checked;            
         }
 
         private void cbTrayOffTransparent_CheckedChanged(object sender, EventArgs e)
         {
-            btnTrayOffBgColor.Enabled = !cbTrayOffTransparent.Checked;
-            
+            btnTrayOffBgColor.Visible = !cbTrayOffTransparent.Checked;           
         }
     }
 }
