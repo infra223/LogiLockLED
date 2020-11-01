@@ -63,10 +63,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <NMakeBuildCommandLine>"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "Setup LogiLockLED.iss"</NMakeBuildCommandLine>
-    <NMakeOutput>Setup LogiLockLED.exe</NMakeOutput>
-    <NMakeReBuildCommandLine>"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "Setup LogiLockLED.iss"</NMakeReBuildCommandLine>
+    <NMakeBuildCommandLine>"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /O"$(ProjectDir)$(Configuration)\" "Setup LogiLockLED.iss" </NMakeBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)$(Configuration)\Setup LogiLockLED.exe</NMakeOutput>
+    <NMakeReBuildCommandLine>"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /O"$(ProjectDir)$(Configuration)\" "Setup LogiLockLED.iss" </NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <NMakeBuildCommandLine>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</NMakeBuildCommandLine>

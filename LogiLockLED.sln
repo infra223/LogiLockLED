@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogiLockLED", "LogiLockLED\LogiLockLED.csproj", "{FCB10E99-94CD-4CB1-8BEA-B092C9AEC878}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Inno Setup LogiLockLED", "Inno Setup LogiLockLED\Inno Setup LogiLockLED.vcxproj", "{C9F7A1A6-87F7-41FF-B1AA-71B63DE9D8DA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCB10E99-94CD-4CB1-8BEA-B092C9AEC878} = {FCB10E99-94CD-4CB1-8BEA-B092C9AEC878}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
