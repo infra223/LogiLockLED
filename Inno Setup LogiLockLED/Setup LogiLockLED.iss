@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{37738065-07D8-4618-9F70-62F502D902BB}
 AppName=LogiLockLED
-AppVersion=1.5
+AppVersion=1.3
 ;AppVerName=LogiLockLED 1.0
 AppPublisherURL=https://github.com/infra223/LogiLockLED
 AppSupportURL=https://github.com/infra223/LogiLockLED
