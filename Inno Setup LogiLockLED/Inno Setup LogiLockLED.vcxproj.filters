@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="scripts">
+      <UniqueIdentifier>{4ea0badb-79d9-4885-9624-eb55a1aab1b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\products">
+      <UniqueIdentifier>{a3be0aaf-d7a7-4262-9b2e-55db5e57c75a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts\isxdl">
+      <UniqueIdentifier>{8e9043c6-8869-443b-9132-7575e0a1ed6d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Setup LogiLockLED.iss" />
+    <None Include="scripts\products.iss">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\products.pas">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\products\dotnetfx46.iss">
+      <Filter>scripts\products</Filter>
+    </None>
+    <None Include="scripts\products\dotnetfxversion.iss">
+      <Filter>scripts\products</Filter>
+    </None>
+    <None Include="scripts\products\stringversion.iss">
+      <Filter>scripts\products</Filter>
+    </None>
+    <None Include="scripts\isxdl\chinese.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\czech.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\dutch.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\english.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\french.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\french2.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\french3.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\german.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\isxdl.dll">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\italian.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\japanese.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\korean.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\norwegian.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\polish.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\portugues.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\portuguese.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\russian.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\spanish.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\swedish.ini">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\isxdl\isxdl.iss">
+      <Filter>scripts\isxdl</Filter>
+    </None>
+    <None Include="scripts\products\winversion.iss">
+      <Filter>scripts\products</Filter>
+    </None>
+  </ItemGroup>
+</Project>

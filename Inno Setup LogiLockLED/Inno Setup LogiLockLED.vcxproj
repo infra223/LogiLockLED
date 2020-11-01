@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{C9F7A1A6-87F7-41FF-B1AA-71B63DE9D8DA}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "Setup LogiLockLED.iss"</NMakeBuildCommandLine>
+    <NMakeOutput>Setup LogiLockLED.exe</NMakeOutput>
+    <NMakeReBuildCommandLine>"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "Setup LogiLockLED.iss"</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</NMakeBuildCommandLine>
+    <NMakeOutput>Setup LogiLockLED.exe</NMakeOutput>
+    <NMakeReBuildCommandLine>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NMakeBuildCommandLine>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</NMakeBuildCommandLine>
+    <NMakeOutput>Setup LogiLockLED.exe</NMakeOutput>
+    <NMakeReBuildCommandLine>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NMakeBuildCommandLine>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</NMakeBuildCommandLine>
+    <NMakeOutput>Setup LogiLockLED.exe</NMakeOutput>
+    <NMakeReBuildCommandLine>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="scripts\isxdl\chinese.ini" />
+    <None Include="scripts\isxdl\czech.ini" />
+    <None Include="scripts\isxdl\dutch.ini" />
+    <None Include="scripts\isxdl\english.ini" />
+    <None Include="scripts\isxdl\french.ini" />
+    <None Include="scripts\isxdl\french2.ini" />
+    <None Include="scripts\isxdl\french3.ini" />
+    <None Include="scripts\isxdl\german.ini" />
+    <None Include="scripts\isxdl\isxdl.dll" />
+    <None Include="scripts\isxdl\isxdl.iss" />
+    <None Include="scripts\isxdl\italian.ini" />
+    <None Include="scripts\isxdl\japanese.ini" />
+    <None Include="scripts\isxdl\korean.ini" />
+    <None Include="scripts\isxdl\norwegian.ini" />
+    <None Include="scripts\isxdl\polish.ini" />
+    <None Include="scripts\isxdl\portugues.ini" />
+    <None Include="scripts\isxdl\portuguese.ini" />
+    <None Include="scripts\isxdl\russian.ini" />
+    <None Include="scripts\isxdl\spanish.ini" />
+    <None Include="scripts\isxdl\swedish.ini" />
+    <None Include="scripts\products.iss" />
+    <None Include="scripts\products.pas" />
+    <None Include="scripts\products\dotnetfx46.iss" />
+    <None Include="scripts\products\dotnetfxversion.iss" />
+    <None Include="scripts\products\stringversion.iss" />
+    <None Include="scripts\products\winversion.iss" />
+    <None Include="Setup LogiLockLED.iss" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
