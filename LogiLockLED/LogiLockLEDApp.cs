@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -45,6 +46,7 @@ namespace LogiLockLED
                 new MenuItem("-"),
                 configEnableItem,
                 new MenuItem("Configuration", new EventHandler(ShowConfig)),
+                new MenuItem("Restart App", new EventHandler(Restart)),
                 new MenuItem("Exit", new EventHandler(Exit))
             });
             notifyIcon.ContextMenu = contextMenu;
@@ -53,8 +55,9 @@ namespace LogiLockLED
 
             trayManager = new TrayManager(ledSettings);
 
+            SystemEvents.PowerModeChanged += OnPowerModeChange;
+            SystemEvents.SessionSwitch += OnSystemSessionSwitch;
 
-            SystemEvents.PowerModeChanged += OnPowerModeChange;            
         }
 
        
@@ -109,18 +112,41 @@ namespace LogiLockLED
 
         private void Exit(object sender, EventArgs e)
         {
+            ShutdownApplication();
+            Application.Exit();
+        }
+
+        private void Restart(object sender, EventArgs e)
+        {            
+            RestartApplication();
+        }
+
+        private void ShutdownApplication()
+        {
             // We must manually tidy up and remove the icon before we exit.
             // Otherwise it will be left behind until the user mouses over.
             notifyIcon.Visible = false;
             trayManager.HideAll();
-            
+
             configWindow.Close();
-            ledThread.StopThread();            
+            ledThread.StopThread();
 
             this.ExitThread();
-            Application.Exit();
-        }     
-        
+        }
+
+        private void RestartApplication()
+        {
+            ShutdownApplication();
+            //ProcessStartInfo Info = new ProcessStartInfo();
+            //Info.Arguments = "/C timeout 2 && \"" + Application.ExecutablePath + "\"";
+            //Info.WindowStyle = ProcessWindowStyle.Hidden;
+            //Info.CreateNoWindow = true;
+            //Info.FileName = "cmd.exe";
+            //Process.Start(Info);
+            //Application.Exit();
+            Application.Restart();
+        }
+
         private void OnPowerModeChange(object s, PowerModeChangedEventArgs e)
         {
             if (e.Mode == PowerModes.Resume)
@@ -128,6 +154,13 @@ namespace LogiLockLED
                 ledThread.RestartThread();                
             }
         }
+
+        private void OnSystemSessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if(e.Reason == SessionSwitchReason.SessionUnlock)
+                RestartApplication();
+        }   
+
 
     }
 }
