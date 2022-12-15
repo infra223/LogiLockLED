@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{37738065-07D8-4618-9F70-62F502D902BB}
 AppName=LogiLockLED
-AppVersion=1.3
+AppVersion=1.4
 ;AppVerName=LogiLockLED 1.0
 AppPublisherURL=https://github.com/infra223/LogiLockLED
 AppSupportURL=https://github.com/infra223/LogiLockLED
@@ -25,14 +25,15 @@ UninstallDisplayIcon={app}\LogiLockLED.exe
 #include "scripts\products\stringversion.iss"
 #include "scripts\products\winversion.iss"
 #include "scripts\products\dotnetfxversion.iss"
-#include "scripts\products\dotnetfx46.iss"
+//#include "scripts\products\dotnetfx46.iss"
+#include "scripts\products\dotnetfx48.iss"
 
 [Code]
 function InitializeSetup(): Boolean;
 begin
 	// initialize windows version
 	initwinversion();
-  dotnetfx46(60); // install if version < 4.6.0  
+  dotnetfx48(80); // install if version < 4.8.0  
   Result := true;
 end;
 
@@ -44,6 +45,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "..\LogiLockLED\bin\Release\LogiLockLED.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\LogiLockLED\bin\Release\LogiLockLED.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\LogiLockLED\bin\Release\LogitechLedEnginesWrapper.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\LogiLockLED\bin\Release\OpenRGB.NET.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

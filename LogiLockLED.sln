@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30503.244
+VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogiLockLED", "LogiLockLED\LogiLockLED.csproj", "{FCB10E99-94CD-4CB1-8BEA-B092C9AEC878}"
 EndProject
@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Inno Setup LogiLockLED", "I
 	ProjectSection(ProjectDependencies) = postProject
 		{FCB10E99-94CD-4CB1-8BEA-B092C9AEC878} = {FCB10E99-94CD-4CB1-8BEA-B092C9AEC878}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRGB.NET", "OpenRGB.NET\OpenRGB.NET.csproj", "{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,18 @@ Global
 		{C9F7A1A6-87F7-41FF-B1AA-71B63DE9D8DA}.Release|x64.Build.0 = Release|x64
 		{C9F7A1A6-87F7-41FF-B1AA-71B63DE9D8DA}.Release|x86.ActiveCfg = Release|Win32
 		{C9F7A1A6-87F7-41FF-B1AA-71B63DE9D8DA}.Release|x86.Build.0 = Release|Win32
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Debug|x64.Build.0 = Debug|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Debug|x86.Build.0 = Debug|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Release|x64.ActiveCfg = Release|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Release|x64.Build.0 = Release|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Release|x86.ActiveCfg = Release|Any CPU
+		{B31BF217-DA00-4EDD-A7ED-7FF2568B9E85}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

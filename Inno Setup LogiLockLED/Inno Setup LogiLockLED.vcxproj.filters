@@ -96,4 +96,7 @@
       <Filter>scripts\products</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="scripts\products\dotnetfx48.iss" />
+  </ItemGroup>
 </Project>

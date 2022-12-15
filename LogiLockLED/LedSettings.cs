@@ -45,6 +45,7 @@ namespace LogiLockLED
         public Color TrayOffBackColor { get; set; }
         public bool TrayOffBorder { get; set; }
 
+        public string LedController { get; set; }
 
         private const string appRegKeyName = "LogiLockLED";
 
@@ -89,6 +90,7 @@ namespace LogiLockLED
             TrayOffColor = Properties.Settings.Default.TrayOffColor;
             TrayOffBackColor = Properties.Settings.Default.TrayOffBackColor;
             TrayOffBorder = Properties.Settings.Default.TrayOffBorder;
+            LedController = Properties.Settings.Default.LedController;
 
     }
 
@@ -129,6 +131,7 @@ namespace LogiLockLED
             Properties.Settings.Default.TrayOffColor = TrayOffColor;
             Properties.Settings.Default.TrayOffBackColor = TrayOffBackColor;
             Properties.Settings.Default.TrayOffBorder = TrayOffBorder;
+            Properties.Settings.Default.LedController = LedController;
 
             Properties.Settings.Default.Save();
 

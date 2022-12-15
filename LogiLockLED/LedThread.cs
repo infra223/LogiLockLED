@@ -1,5 +1,4 @@
-﻿using LedCSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,21 +10,21 @@ namespace LogiLockLED
 {
     public class LedThread
     {
-        private LedSettings ledSettings;
-        private Thread thread;
-        private bool stopThread;
-        private bool refreshRequired = false;
-        public event EventHandler KeylockUpdated;
+        private LedSettings _ledSettings;
+        private Thread _thread;
+        private bool _stopThread;
+        private bool _refreshRequired = false;
+        private ILedController _ledController;
+        private bool _ledApiInit;
 
-        bool _ledApiInit;
+        public event EventHandler KeylockUpdated;        
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true, CallingConvention = CallingConvention.Winapi)]
         public static extern short GetKeyState(int keyCode);
 
         public LedThread(ref LedSettings settings)
         {
-            ledSettings = settings;
-            
+            _ledSettings = settings;           
         }
 
         public void RestartThread()
@@ -36,30 +35,38 @@ namespace LogiLockLED
 
         public void StartThread()
         {
-            if (ledSettings.EnableKeyLockLEDs)
-            {
-                _ledApiInit = LogitechGSDK.LogiLedInit();
-                LogitechGSDK.LogiLedSetTargetDevice(LogitechGSDK.LOGI_DEVICETYPE_PERKEY_RGB);
-                LogitechGSDK.LogiLedSaveCurrentLighting();
-                LogitechGSDK.LogiLedStopEffects();
+            _ledController = createLedController();
 
-                if (thread == null || thread.ThreadState != ThreadState.Running)
+            if (_ledSettings.EnableKeyLockLEDs)
+            {
+                _ledApiInit = _ledController.Initialise();
+
+                if (_thread == null || _thread.ThreadState != ThreadState.Running)
                 {
-                    thread = new Thread(ThreadMain);
-                    stopThread = false;
-                    thread.Start();
+                    _thread = new Thread(ThreadMain);
+                    _stopThread = false;
+                    _thread.Start();
                 }                
             }
         }
 
+        private ILedController createLedController()
+        {
+            if (_ledSettings.LedController == "OpenRGB")
+                return new OpenRgbController();
+            if (_ledSettings.LedController == "Logitech G HUB")
+                return new LogitechSDKController();
+            
+            return new DisabledController();            
+        }
+
         public void StopThread()
         {
-            stopThread = true;
-            thread?.Abort();
+            _stopThread = true;
+            _thread?.Abort();
             if (_ledApiInit)
             {
-                LogitechGSDK.LogiLedRestoreLighting();
-                LogitechGSDK.LogiLedShutdown();
+                _ledController.Shutdown();
                 _ledApiInit = false;
             }
             
@@ -67,11 +74,11 @@ namespace LogiLockLED
 
         public void UpdateSettings(LedSettings settings)
         {
-            ledSettings = settings;
-            if (ledSettings.EnableKeyLockLEDs)
+            _ledSettings = settings;
+            if (_ledSettings.EnableKeyLockLEDs)
             {                
-                refreshRequired = true;
-                if(thread == null || thread.ThreadState != ThreadState.Running)
+                _refreshRequired = true;
+                if(_thread == null || _thread.ThreadState != ThreadState.Running)
                 {
                     StartThread();
                 }
@@ -89,73 +96,60 @@ namespace LogiLockLED
             bool prevScrollLock = (((ushort)GetKeyState(0x91)) & 0xffff) == 0;
             bool firstLoop = true;
 
-            while (!stopThread)
+            while (!_stopThread)
             { 
                 bool CapsLock = (((ushort)GetKeyState(0x14)) & 0xffff) != 0;
                 bool NumLock = (((ushort)GetKeyState(0x90)) & 0xffff) != 0;
                 bool ScrollLock = (((ushort)GetKeyState(0x91)) & 0xffff) != 0;
 
-                if ((refreshRequired || prevNumLock != NumLock))
+                if ((_refreshRequired || prevNumLock != NumLock))
                 {                    
                     prevNumLock = NumLock;
 
                     if(!firstLoop)
                         KeylockUpdated?.Invoke(this, new KeylockChangeArgs(LockKey.Num, NumLock));
                     
-                    if (ledSettings.EnableNum)
+                    if (_ledSettings.EnableNum)
                     {
-                        if (NumLock)
-                            LogiLedSetLightingForKeyWithKeyName(keyboardNames.NUM_LOCK, ledSettings.NumOnColor);
-                        else
-                            LogiLedSetLightingForKeyWithKeyName(keyboardNames.NUM_LOCK, ledSettings.NumOffColor);
+                        _ledController.SetLockKeyColor(LockKey.Num, NumLock ? _ledSettings.NumOnColor : _ledSettings.NumOffColor);
                     }
                 }
 
-                if ((refreshRequired || prevCapsLock != CapsLock))
+                if ((_refreshRequired || prevCapsLock != CapsLock))
                 {
                     prevCapsLock = CapsLock;
 
                     if (!firstLoop)
                         KeylockUpdated?.Invoke(this, new KeylockChangeArgs(LockKey.Caps, CapsLock));
 
-                    if (ledSettings.EnableCaps)
+                    if (_ledSettings.EnableCaps)
                     {
-                        if (CapsLock)
-                            LogiLedSetLightingForKeyWithKeyName(keyboardNames.CAPS_LOCK, ledSettings.CapsOnColor);
-                        else
-                            LogiLedSetLightingForKeyWithKeyName(keyboardNames.CAPS_LOCK, ledSettings.CapsOffColor);
+                        _ledController.SetLockKeyColor(LockKey.Caps, CapsLock ? _ledSettings.CapsOnColor : _ledSettings.CapsOffColor);
                     }
                 }
 
-                if ((refreshRequired || prevScrollLock != ScrollLock))
+                if ((_refreshRequired || prevScrollLock != ScrollLock))
                 {
                     prevScrollLock = ScrollLock;
 
                     if (!firstLoop)
                         KeylockUpdated?.Invoke(this, new KeylockChangeArgs(LockKey.Scroll, ScrollLock));
 
-                    if (ledSettings.EnableScroll)
+                    if (_ledSettings.EnableScroll)
                     {
-                        if (ScrollLock)
-                            LogiLedSetLightingForKeyWithKeyName(keyboardNames.SCROLL_LOCK, ledSettings.ScrollOnColor);
-                        else
-                            LogiLedSetLightingForKeyWithKeyName(keyboardNames.SCROLL_LOCK, ledSettings.ScrollOffColor);
+                        _ledController.SetLockKeyColor(LockKey.Scroll, ScrollLock ? _ledSettings.ScrollOnColor : _ledSettings.ScrollOffColor);                       
                     }
                 }
-                refreshRequired = false;
+                _refreshRequired = false;
                 firstLoop = false;
                 Thread.Sleep(75);                              
             }           
             
         }
-
-        private static bool LogiLedSetLightingForKeyWithKeyName(keyboardNames keyCode, System.Drawing.Color color)
-        {
-            return LogitechGSDK.LogiLedSetLightingForKeyWithKeyName(keyCode, color.R * 100 / 255, color.G * 100 / 255, color.B * 100 / 255);
-        }
+        
     }
 
-    public enum LockKey { Caps, Num, Scroll};
+    
 
     public class KeylockChangeArgs : EventArgs
     {

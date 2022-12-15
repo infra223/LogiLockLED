@@ -36,7 +36,7 @@ namespace LogiLockLED
         private void PopulateSettingsToUI()
         {
             cbEnable.Checked = ledSettings.EnableKeyLockLEDs;
-
+            cbLedController.Text = ledSettings.LedController;
             cbEnableCaps.Checked = ledSettings.EnableCaps;
             btnCapsOffColour.BackColor = ledSettings.CapsOffColor;
             btnCapsOnColour.BackColor = ledSettings.CapsOnColor;
@@ -85,6 +85,7 @@ namespace LogiLockLED
         {
             ledSettings.EnableKeyLockLEDs = cbEnable.Checked;
             ledSettings.AutoStartApp = cbAutoStartApp.Checked;
+            ledSettings.LedController = cbLedController.Text;
 
             ledSettings.EnableCaps = cbEnableCaps.Checked;
             ledSettings.EnableNum = cbEnableNum.Checked;

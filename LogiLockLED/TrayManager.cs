@@ -12,25 +12,30 @@ namespace LogiLockLED
 {
     public class TrayManager
     {
-        private LedSettings ledSettings;
-        private readonly NotifyIcon numNotifyIcon;
-        private readonly NotifyIcon capsNotifyIcon;
-        private readonly NotifyIcon scrollNotifyIcon;
+        private LedSettings _ledSettings;
+        private readonly NotifyIcon _numNotifyIcon;
+        private readonly NotifyIcon _capsNotifyIcon;
+        private readonly NotifyIcon _scrollNotifyIcon;
+        ContextMenu _contextMenu;
 
-        private Icon numIconOn;
-        private Icon numIconOff;
-        private Icon capsIconOn;
-        private Icon capsIconOff;
-        private Icon scrollIconOn;
-        private Icon scrollIconOff;
+        private Icon _numIconOn;
+        private Icon _numIconOff;
+        private Icon _capsIconOn;
+        private Icon _capsIconOff;
+        private Icon _scrollIconOn;
+        private Icon _scrollIconOff;
 
-        public TrayManager (LedSettings settinhgs)
+        public TrayManager (LedSettings settinhgs, ContextMenu contextMenu)
         {
-            ledSettings = settinhgs;
+            _ledSettings = settinhgs;
+            _contextMenu = contextMenu;
 
-            numNotifyIcon = new NotifyIcon();
-            capsNotifyIcon = new NotifyIcon();
-            scrollNotifyIcon = new NotifyIcon();
+            _numNotifyIcon = new NotifyIcon();
+            _numNotifyIcon.ContextMenu = _contextMenu;
+            _capsNotifyIcon = new NotifyIcon();
+            _capsNotifyIcon.ContextMenu = _contextMenu;
+            _scrollNotifyIcon = new NotifyIcon();
+            _scrollNotifyIcon.ContextMenu = _contextMenu;
 
             ApplySettings();
             
@@ -40,19 +45,19 @@ namespace LogiLockLED
         {
             DisposeIcons();
 
-            numIconOn = CreateTextIcon("1", ledSettings.TrayOnColor, ledSettings.TrayOnBackColor, ledSettings.TrayOnBorder, 1);
-            numIconOff = CreateTextIcon("1", ledSettings.TrayOffColor, ledSettings.TrayOffBackColor, ledSettings.TrayOffBorder, 1);
-            capsIconOn = CreateTextIcon("A", ledSettings.TrayOnColor, ledSettings.TrayOnBackColor, ledSettings.TrayOnBorder);
-            capsIconOff = CreateTextIcon("a", ledSettings.TrayOffColor, ledSettings.TrayOffBackColor, ledSettings.TrayOffBorder, 1);
-            scrollIconOn = CreateTextIcon("ᛨ", ledSettings.TrayOnColor, ledSettings.TrayOnBackColor, ledSettings.TrayOnBorder, 1);
-            scrollIconOff = CreateTextIcon("ᛨ", ledSettings.TrayOffColor, ledSettings.TrayOffBackColor, ledSettings.TrayOffBorder, 1);                     
+            _numIconOn = CreateTextIcon("1", _ledSettings.TrayOnColor, _ledSettings.TrayOnBackColor, _ledSettings.TrayOnBorder, 1);
+            _numIconOff = CreateTextIcon("1", _ledSettings.TrayOffColor, _ledSettings.TrayOffBackColor, _ledSettings.TrayOffBorder, 1);
+            _capsIconOn = CreateTextIcon("A", _ledSettings.TrayOnColor, _ledSettings.TrayOnBackColor, _ledSettings.TrayOnBorder);
+            _capsIconOff = CreateTextIcon("a", _ledSettings.TrayOffColor, _ledSettings.TrayOffBackColor, _ledSettings.TrayOffBorder, 1);
+            _scrollIconOn = CreateTextIcon("ᛨ", _ledSettings.TrayOnColor, _ledSettings.TrayOnBackColor, _ledSettings.TrayOnBorder, 1);
+            _scrollIconOff = CreateTextIcon("ᛨ", _ledSettings.TrayOffColor, _ledSettings.TrayOffBackColor, _ledSettings.TrayOffBorder, 1);                     
 
             UpdateIndicators();
-            if (ledSettings.EnableKeyLockLEDs)
+            if (_ledSettings.EnableKeyLockLEDs)
             {
-                numNotifyIcon.Visible = ledSettings.TrayShowNum;
-                capsNotifyIcon.Visible = ledSettings.TrayShowCaps;
-                scrollNotifyIcon.Visible = ledSettings.TrayShowScroll;
+                _numNotifyIcon.Visible = _ledSettings.TrayShowNum;
+                _capsNotifyIcon.Visible = _ledSettings.TrayShowCaps;
+                _scrollNotifyIcon.Visible = _ledSettings.TrayShowScroll;
             }
             else
             {
@@ -62,17 +67,17 @@ namespace LogiLockLED
 
         private void DisposeIcons()
         {
-            numIconOn?.Dispose();
-            numIconOff?.Dispose();
-            capsIconOn?.Dispose();
-            capsIconOff?.Dispose();
-            scrollIconOn?.Dispose();
-            scrollIconOff?.Dispose();
+            _numIconOn?.Dispose();
+            _numIconOff?.Dispose();
+            _capsIconOn?.Dispose();
+            _capsIconOff?.Dispose();
+            _scrollIconOn?.Dispose();
+            _scrollIconOff?.Dispose();
         }
 
         public void UpdateSettings(LedSettings settings)
         {
-            ledSettings = settings;            
+            _ledSettings = settings;            
             ApplySettings();
         }
 
@@ -108,9 +113,9 @@ namespace LogiLockLED
             bool capsLock = (((ushort)GetKeyState(0x14)) & 0xffff) != 0;            
             bool scrollLock = (((ushort)GetKeyState(0x91)) & 0xffff) != 0;
 
-            numNotifyIcon.Icon = numLock ? numIconOn : numIconOff;
-            capsNotifyIcon.Icon = capsLock ? capsIconOn : capsIconOff;
-            scrollNotifyIcon.Icon = scrollLock ? scrollIconOn : scrollIconOff;
+            _numNotifyIcon.Icon = numLock ? _numIconOn : _numIconOff;
+            _capsNotifyIcon.Icon = capsLock ? _capsIconOn : _capsIconOff;
+            _scrollNotifyIcon.Icon = scrollLock ? _scrollIconOn : _scrollIconOff;
         }
 
         ~TrayManager()
@@ -121,9 +126,9 @@ namespace LogiLockLED
 
         public void HideAll()
         {
-            numNotifyIcon.Visible = false;
-            capsNotifyIcon.Visible = false;
-            scrollNotifyIcon.Visible = false;
+            _numNotifyIcon.Visible = false;
+            _capsNotifyIcon.Visible = false;
+            _scrollNotifyIcon.Visible = false;
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true, CallingConvention = CallingConvention.Winapi)]

@@ -53,7 +53,7 @@ namespace LogiLockLED
             notifyIcon.DoubleClick += ShowConfig;
             notifyIcon.Visible = true;
 
-            trayManager = new TrayManager(ledSettings);
+            trayManager = new TrayManager(ledSettings, contextMenu);
 
             SystemEvents.PowerModeChanged += OnPowerModeChange;
             SystemEvents.SessionSwitch += OnSystemSessionSwitch;

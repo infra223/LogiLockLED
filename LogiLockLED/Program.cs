@@ -25,7 +25,7 @@ namespace LogiLockLED
             {
                 if (!singleInstanceMutex.WaitOne(5000, false))
                 {
-                    MessageBox.Show("Another instance of LogiLockLED is already running.");
+                    //MessageBox.Show("Another instance of LogiLockLED is already running.");
                     return;
                 }
 
