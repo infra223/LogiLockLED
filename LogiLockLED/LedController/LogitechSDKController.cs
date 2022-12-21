@@ -11,10 +11,11 @@ namespace LogiLockLED
     {
         public bool Initialise()
         {
-            bool res = LogitechGSDK.LogiLedInitWithName("LogiLockLED");
+            bool res = LogitechGSDK.LogiLedInitWithName("LogiLockLED");            
             LogitechGSDK.LogiLedSetTargetDevice(LogitechGSDK.LOGI_DEVICETYPE_PERKEY_RGB);
-            LogitechGSDK.LogiLedSaveCurrentLighting();
+            LogitechGSDK.LogiLedSaveCurrentLighting();            
             LogitechGSDK.LogiLedStopEffects();
+            
             return res;
         }
 

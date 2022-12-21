@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace LogiLockLED
 {
@@ -16,6 +17,7 @@ namespace LogiLockLED
         private bool _refreshRequired = false;
         private ILedController _ledController;
         private bool _ledApiInit;
+        private System.Timers.Timer _refreshTimer;
 
         public event EventHandler KeylockUpdated;        
 
@@ -24,7 +26,15 @@ namespace LogiLockLED
 
         public LedThread(ref LedSettings settings)
         {
-            _ledSettings = settings;           
+            _ledSettings = settings;
+            _refreshTimer = new System.Timers.Timer(1000);
+            _refreshTimer.Elapsed += refreshTimerEvent;
+            _refreshTimer.Start();
+        }
+
+        private void refreshTimerEvent(object sender, ElapsedEventArgs e)
+        {
+            Refresh();
         }
 
         public void RestartThread()
@@ -77,16 +87,21 @@ namespace LogiLockLED
             _ledSettings = settings;
             if (_ledSettings.EnableKeyLockLEDs)
             {                
-                _refreshRequired = true;
-                if(_thread == null || _thread.ThreadState != ThreadState.Running)
+                if (_thread == null || _thread.ThreadState != ThreadState.Running)
                 {
                     StartThread();
                 }
+                Refresh();
             }
             else
             {
                 StopThread();
             }
+        }
+
+        public void Refresh()
+        {
+            _refreshRequired = true;
         }
 
         private void ThreadMain()
@@ -106,12 +121,13 @@ namespace LogiLockLED
                 {                    
                     prevNumLock = NumLock;
 
-                    if(!firstLoop)
+                    if(!firstLoop && !_refreshRequired)
                         KeylockUpdated?.Invoke(this, new KeylockChangeArgs(LockKey.Num, NumLock));
                     
                     if (_ledSettings.EnableNum)
                     {
-                        _ledController.SetLockKeyColor(LockKey.Num, NumLock ? _ledSettings.NumOnColor : _ledSettings.NumOffColor);
+                        var col = NumLock ? _ledSettings.NumOnColor : _ledSettings.NumOffColor;
+                        setKeyColor(LockKey.Num, col, _refreshRequired);                        
                     }
                 }
 
@@ -119,12 +135,13 @@ namespace LogiLockLED
                 {
                     prevCapsLock = CapsLock;
 
-                    if (!firstLoop)
+                    if (!firstLoop && !_refreshRequired)
                         KeylockUpdated?.Invoke(this, new KeylockChangeArgs(LockKey.Caps, CapsLock));
 
                     if (_ledSettings.EnableCaps)
-                    {
-                        _ledController.SetLockKeyColor(LockKey.Caps, CapsLock ? _ledSettings.CapsOnColor : _ledSettings.CapsOffColor);
+                    {                        
+                        var col = CapsLock ? _ledSettings.CapsOnColor : _ledSettings.CapsOffColor;
+                        setKeyColor(LockKey.Caps, col, _refreshRequired);
                     }
                 }
 
@@ -132,20 +149,35 @@ namespace LogiLockLED
                 {
                     prevScrollLock = ScrollLock;
 
-                    if (!firstLoop)
+                    if (!firstLoop && !_refreshRequired)
                         KeylockUpdated?.Invoke(this, new KeylockChangeArgs(LockKey.Scroll, ScrollLock));
 
                     if (_ledSettings.EnableScroll)
                     {
-                        _ledController.SetLockKeyColor(LockKey.Scroll, ScrollLock ? _ledSettings.ScrollOnColor : _ledSettings.ScrollOffColor);                       
+                        var col = ScrollLock ? _ledSettings.ScrollOnColor : _ledSettings.ScrollOffColor;
+                        setKeyColor(LockKey.Scroll, col, _refreshRequired);
                     }
                 }
+
                 _refreshRequired = false;
                 firstLoop = false;
-                Thread.Sleep(75);                              
+                Thread.Sleep(50);                              
             }           
             
         }
+
+        private bool setKeyColor(LockKey key, System.Drawing.Color col, bool forceSet = true)
+        {            
+            if (forceSet)
+            {
+                var adj = col.B > 128 ? -5 : 5;
+                var col_adj = System.Drawing.Color.FromArgb(col.A, col.R, col.G, col.B + adj); 
+                _ledController.SetLockKeyColor(key, col_adj);
+                Thread.Sleep(50);
+            }
+            return _ledController.SetLockKeyColor(key, col);
+        }
+
         
     }
 

@@ -137,13 +137,6 @@ namespace LogiLockLED
         private void RestartApplication()
         {
             ShutdownApplication();
-            //ProcessStartInfo Info = new ProcessStartInfo();
-            //Info.Arguments = "/C timeout 2 && \"" + Application.ExecutablePath + "\"";
-            //Info.WindowStyle = ProcessWindowStyle.Hidden;
-            //Info.CreateNoWindow = true;
-            //Info.FileName = "cmd.exe";
-            //Process.Start(Info);
-            //Application.Exit();
             Application.Restart();
         }
 
