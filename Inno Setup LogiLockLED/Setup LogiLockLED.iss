@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{37738065-07D8-4618-9F70-62F502D902BB}
 AppName=LogiLockLED
-AppVersion=1.4
+AppVersion=1.5
 ;AppVerName=LogiLockLED 1.0
 AppPublisherURL=https://github.com/infra223/LogiLockLED
 AppSupportURL=https://github.com/infra223/LogiLockLED
@@ -46,6 +46,8 @@ Source: "..\LogiLockLED\bin\Release\LogiLockLED.exe"; DestDir: "{app}"; Flags: i
 Source: "..\LogiLockLED\bin\Release\LogiLockLED.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\LogiLockLED\bin\Release\LogitechLedEnginesWrapper.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\LogiLockLED\bin\Release\OpenRGB.NET.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\LogiLockLED\bin\Release\NAudio.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\LogiLockLED\bin\Release\NAudio.Wasapi.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -12,6 +12,8 @@ namespace LogiLockLED
         public bool EnableCaps { get; set; }
         public bool EnableNum { get; set; }
         public bool EnableScroll { get; set; }
+        public bool EnableMute { get; set; }
+        public LockKey MuteIndicatorKey{ get; set; }
 
         public Color CapsOnColor { get; set; }
         public Color CapsOffColor { get; set; }
@@ -19,6 +21,9 @@ namespace LogiLockLED
         public Color NumOffColor { get; set; }
         public Color ScrollOnColor { get; set; }
         public Color ScrollOffColor { get; set; }
+        public Color MuteOnColor { get; set; }
+        public Color MuteOffColor { get; set; }
+
 
         public bool OsdEnabled { get; set; }
         public Font OsdFont { get; set; }
@@ -56,6 +61,10 @@ namespace LogiLockLED
             EnableCaps = Properties.Settings.Default.EnableCaps;
             EnableNum =Properties.Settings.Default.EnableNum;
             EnableScroll = Properties.Settings.Default.EnableScroll;
+            EnableMute = Properties.Settings.Default.EnableMute;
+
+            LockKey muteIndicatorKey;
+            MuteIndicatorKey = (Enum.TryParse<LockKey>(Properties.Settings.Default.MuteIndicatorKey, out muteIndicatorKey) ? muteIndicatorKey : LockKey.Mute);
 
             CapsOnColor = Properties.Settings.Default.CapsOnColour;
             CapsOffColor = Properties.Settings.Default.CapsOffColour;
@@ -63,6 +72,8 @@ namespace LogiLockLED
             NumOffColor = Properties.Settings.Default.NumOffColour;
             ScrollOnColor = Properties.Settings.Default.ScrollOnColour;
             ScrollOffColor = Properties.Settings.Default.ScrollOffColour;
+            MuteOnColor = Properties.Settings.Default.MuteOnColour;
+            MuteOffColor = Properties.Settings.Default.MuteOffColour;
 
             AutoStartApp = GetAutoStartSetting();
             OsdEnabled = Properties.Settings.Default.OsdEnabled;
@@ -100,6 +111,9 @@ namespace LogiLockLED
             Properties.Settings.Default.EnableCaps = EnableCaps;
             Properties.Settings.Default.EnableNum = EnableNum;
             Properties.Settings.Default.EnableScroll = EnableScroll;
+            Properties.Settings.Default.EnableMute = EnableMute;
+
+            Properties.Settings.Default.MuteIndicatorKey = MuteIndicatorKey.ToString();
 
             Properties.Settings.Default.CapsOnColour = CapsOnColor;
             Properties.Settings.Default.CapsOffColour = CapsOffColor;
@@ -107,6 +121,8 @@ namespace LogiLockLED
             Properties.Settings.Default.NumOffColour = NumOffColor;
             Properties.Settings.Default.ScrollOnColour = ScrollOnColor;
             Properties.Settings.Default.ScrollOffColour = ScrollOffColor;
+            Properties.Settings.Default.MuteOnColour = MuteOnColor;
+            Properties.Settings.Default.MuteOffColour = MuteOffColor;
 
             Properties.Settings.Default.OsdEnabled = OsdEnabled;
             Properties.Settings.Default.OsdFont = OsdFont;

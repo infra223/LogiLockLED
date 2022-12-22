@@ -18,19 +18,27 @@ namespace LogiLockLED
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            using (singleInstanceMutex = new Mutex(false, appGuid.ToString()))
+            try
             {
-                if (!singleInstanceMutex.WaitOne(5000, false))
-                {
-                    //MessageBox.Show("Another instance of LogiLockLED is already running.");
-                    return;
-                }
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-                Application.Run(new LogiLockLEDApp());
-                GC.KeepAlive(singleInstanceMutex);
+                using (singleInstanceMutex = new Mutex(false, appGuid.ToString()))
+                {
+                    if (!singleInstanceMutex.WaitOne(5000, false))
+                    {
+                        //MessageBox.Show("Another instance of LogiLockLED is already running.");
+                        return;
+                    }
+
+                    Application.Run(new LogiLockLEDApp());
+                    GC.KeepAlive(singleInstanceMutex);
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
             }
 
         }

@@ -37,9 +37,9 @@ namespace LogiLockLED
             if (this.Visible)
             {
                 lblLockText.Text = "           ";
-                this.Hide();
-                hideTimer.Stop();                
+                this.Hide();                
             }
+            hideTimer.Stop();
         }
 
         public void ShowLockState(LockKey lockKey, bool state)

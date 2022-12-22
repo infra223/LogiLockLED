@@ -418,5 +418,53 @@ namespace LogiLockLED.Properties {
                 this["LedController"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public global::System.Drawing.Color MuteOnColour {
+            get {
+                return ((global::System.Drawing.Color)(this["MuteOnColour"]));
+            }
+            set {
+                this["MuteOnColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color MuteOffColour {
+            get {
+                return ((global::System.Drawing.Color)(this["MuteOffColour"]));
+            }
+            set {
+                this["MuteOffColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableMute {
+            get {
+                return ((bool)(this["EnableMute"]));
+            }
+            set {
+                this["EnableMute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Mute")]
+        public string MuteIndicatorKey {
+            get {
+                return ((string)(this["MuteIndicatorKey"]));
+            }
+            set {
+                this["MuteIndicatorKey"] = value;
+            }
+        }
     }
 }
