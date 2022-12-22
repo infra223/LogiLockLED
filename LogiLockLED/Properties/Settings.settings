@@ -101,5 +101,17 @@
     <Setting Name="LedController" Type="System.String" Scope="User">
       <Value Profile="(Default)">OpenRGB</Value>
     </Setting>
+    <Setting Name="MuteOnColour" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="MuteOffColour" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="EnableMute" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MuteIndicatorKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Mute</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

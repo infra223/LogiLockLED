@@ -12,7 +12,7 @@ namespace LogiLockLED
 {
     public class OpenRgbController : ILedController, IDisposable
     {
-        private OpenRGBClient _client;
+        private IOpenRGBClient _client;
 
         public bool Initialise()
         {
@@ -57,6 +57,22 @@ namespace LogiLockLED
                                 keyName = "Key: Scroll Lock";
                                 break;
 
+                            case LockKey.Mute:
+                                keyName = "Key: Media Mute";
+                                break;
+
+                            case LockKey.PrtSc:
+                                keyName = "Key: Print Screen";
+                                break;
+
+                            case LockKey.F12:
+                                keyName = "Key: F12";
+                                break;
+
+                            case LockKey.Num_Asterisk:
+                                keyName = "Key: Number Pad *";
+                                break;
+
                         }
 
                         var ledNumIndex = device.Leds.ToList().FindIndex(a => a.Name == keyName);
@@ -82,12 +98,12 @@ namespace LogiLockLED
 
         public void Shutdown()
         {
-            _client.Disconnect();
+            //_client.Disconnect();
         }
 
         public void Dispose()
         {
-            _client.Dispose();            
+            (_client as IDisposable)?.Dispose();            
         }
     }
 }

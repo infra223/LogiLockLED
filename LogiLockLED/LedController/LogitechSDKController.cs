@@ -42,12 +42,28 @@ namespace LogiLockLED
                     keyCode = keyboardNames.SCROLL_LOCK;
                     break;
 
+                case LockKey.Mute:
+                    keyCode = keyboardNames.NUM_ASTERISK;
+                    break;
+
+                case LockKey.PrtSc:
+                    keyCode = keyboardNames.PRINT_SCREEN;
+                    break;
+
+                case LockKey.F12:
+                    keyCode = keyboardNames.F12;
+                    break;
+
+                case LockKey.Num_Asterisk:
+                    keyCode = keyboardNames.NUM_ASTERISK;
+                    break;
+
                 default:
                     return false;
             }
             
             return LogitechGSDK.LogiLedSetLightingForKeyWithKeyName(keyCode, color.R * 100 / 255, color.G * 100 / 255, color.B * 100 / 255);
-        }
+        }      
        
     }
 }

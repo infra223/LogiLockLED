@@ -9,7 +9,7 @@ namespace LogiLockLED
 {
     class LogiLockLEDApp : ApplicationContext
     {
-        private readonly LedThread ledThread;
+        private LedThread ledThread;
         private readonly NotifyIcon notifyIcon;
         
         private readonly ConfigurationForm configWindow;
@@ -31,14 +31,13 @@ namespace LogiLockLED
             configWindow.SettingsUpdated += ConfigWindow_OnSettingsUpdated;
             popupWindow = new IndicatorPopup();
             popupWindow.Configure(ledSettings);
+            createLedThread(ledSettings);
 
-            ledThread = new LedThread(ref ledSettings);
-            ledThread.KeylockUpdated += ledThread_OnKeylockUpdated;
-            ledThread.StartThread();            
+            configEnableItem = new MenuItem("Enabled", new EventHandler(ToggleEnabled))
+            {
+                Checked = ledSettings.EnableKeyLockLEDs
+            };
 
-            configEnableItem = new MenuItem("Enabled", new EventHandler(ToggleEnabled)) { 
-                Checked = ledSettings.EnableKeyLockLEDs };
-            
             notifyIcon = new NotifyIcon();
             notifyIcon.Icon = Properties.Resources.appicon;
             contextMenu = new ContextMenu(new MenuItem[]{
@@ -60,7 +59,19 @@ namespace LogiLockLED
 
         }
 
-       
+        private void createLedThread(LedSettings settings)
+        {
+            ledThread = new LedThread(settings);
+            ledThread.KeylockUpdated += ledThread_OnKeylockUpdated;
+            ledThread.StartThread();
+        }
+
+        private void disposeLedThread()
+        {
+            ledThread.StopThread();
+            ledThread.Dispose();
+        }
+
         private void ledThread_OnKeylockUpdated(object sender, EventArgs e)
         {
             var args = (e as KeylockChangeArgs);
@@ -104,11 +115,12 @@ namespace LogiLockLED
 
         private void PropagateSettings()
         {
-            ledThread.UpdateSettings(ledSettings);
+            //ledThread.UpdateSettings(ledSettings);
+            disposeLedThread();
+            createLedThread(ledSettings);           
             popupWindow.Configure(ledSettings);            
             trayManager.UpdateSettings(ledSettings);
         }
-
 
         private void Exit(object sender, EventArgs e)
         {

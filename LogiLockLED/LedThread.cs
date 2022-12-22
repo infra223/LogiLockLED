@@ -6,12 +6,16 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using NAudio.CoreAudioApi;
 
 namespace LogiLockLED
 {
-    public class LedThread
+    public class LedThread :  IDisposable
     {
+        private MMDeviceEnumerator _mmDeviceEnumerator;
+        
         private LedSettings _ledSettings;
+        private static List<Thread> _threads = new List<Thread>();
         private Thread _thread;
         private bool _stopThread;
         private bool _refreshRequired = false;
@@ -24,9 +28,11 @@ namespace LogiLockLED
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true, CallingConvention = CallingConvention.Winapi)]
         public static extern short GetKeyState(int keyCode);
 
-        public LedThread(ref LedSettings settings)
-        {
+        public LedThread(LedSettings settings)
+        {            
             _ledSettings = settings;
+            _mmDeviceEnumerator = new MMDeviceEnumerator();
+            
             _refreshTimer = new System.Timers.Timer(1000);
             _refreshTimer.Elapsed += refreshTimerEvent;
             _refreshTimer.Start();
@@ -49,13 +55,16 @@ namespace LogiLockLED
 
             if (_ledSettings.EnableKeyLockLEDs)
             {
-                _ledApiInit = _ledController.Initialise();
+                
 
                 if (_thread == null || _thread.ThreadState != ThreadState.Running)
                 {
+                    _ledApiInit = _ledController.Initialise();
                     _thread = new Thread(ThreadMain);
+                    _thread.Name = "LED Update Thread";
                     _stopThread = false;
                     _thread.Start();
+                    _threads.Add(_thread);
                 }                
             }
         }
@@ -80,24 +89,7 @@ namespace LogiLockLED
                 _ledApiInit = false;
             }
             
-        }
-
-        public void UpdateSettings(LedSettings settings)
-        {
-            _ledSettings = settings;
-            if (_ledSettings.EnableKeyLockLEDs)
-            {                
-                if (_thread == null || _thread.ThreadState != ThreadState.Running)
-                {
-                    StartThread();
-                }
-                Refresh();
-            }
-            else
-            {
-                StopThread();
-            }
-        }
+        }      
 
         public void Refresh()
         {
@@ -109,6 +101,9 @@ namespace LogiLockLED
             bool prevCapsLock = (((ushort)GetKeyState(0x14)) & 0xffff) == 0;
             bool prevNumLock = (((ushort)GetKeyState(0x90)) & 0xffff) == 0;
             bool prevScrollLock = (((ushort)GetKeyState(0x91)) & 0xffff) == 0;
+            MMDevice _mmDevice = _mmDeviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            bool prevMuteState = _mmDevice.AudioEndpointVolume.Mute;
+            
             bool firstLoop = true;
 
             while (!_stopThread)
@@ -116,6 +111,7 @@ namespace LogiLockLED
                 bool CapsLock = (((ushort)GetKeyState(0x14)) & 0xffff) != 0;
                 bool NumLock = (((ushort)GetKeyState(0x90)) & 0xffff) != 0;
                 bool ScrollLock = (((ushort)GetKeyState(0x91)) & 0xffff) != 0;
+                bool MuteState = _mmDevice.AudioEndpointVolume.Mute;
 
                 if ((_refreshRequired || prevNumLock != NumLock))
                 {                    
@@ -159,6 +155,20 @@ namespace LogiLockLED
                     }
                 }
 
+                if ((_refreshRequired || prevMuteState != MuteState))
+                {
+                    prevMuteState = MuteState;
+
+                    if (!firstLoop && !_refreshRequired)
+                        KeylockUpdated?.Invoke(this, new KeylockChangeArgs(LockKey.Mute, MuteState));
+
+                    if (_ledSettings.EnableMute)
+                    {
+                        var col = MuteState ? _ledSettings.MuteOnColor : _ledSettings.MuteOffColor;
+                        setKeyColor(_ledSettings.MuteIndicatorKey, col, _refreshRequired);
+                    }
+                }
+
                 _refreshRequired = false;
                 firstLoop = false;
                 Thread.Sleep(50);                              
@@ -178,7 +188,11 @@ namespace LogiLockLED
             return _ledController.SetLockKeyColor(key, col);
         }
 
-        
+        public void Dispose()
+        {
+            _mmDeviceEnumerator.Dispose();
+            (_ledController as IDisposable)?.Dispose();
+        }
     }
 
     

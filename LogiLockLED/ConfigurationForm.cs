@@ -19,6 +19,13 @@ namespace LogiLockLED
             cbOSDPosition.DataSource = Enum.GetValues(typeof(OSDPosition));
             cbOSDPosition.SelectedIndex = 0;
 
+            cbMuteIndicatorKey.Items.Clear();
+            cbMuteIndicatorKey.Items.Add(LockKey.Mute);
+            cbMuteIndicatorKey.Items.Add(LockKey.PrtSc);
+            cbMuteIndicatorKey.Items.Add(LockKey.F12);
+            cbMuteIndicatorKey.Items.Add(LockKey.Num_Asterisk);
+            cbMuteIndicatorKey.SelectedIndex = 0;
+
             PopulateSettingsToUI();
         }
         
@@ -48,6 +55,11 @@ namespace LogiLockLED
             cbEnableScroll.Checked = ledSettings.EnableScroll;
             btnScrollOffColour.BackColor = ledSettings.ScrollOffColor;
             btnScrollOnColour.BackColor = ledSettings.ScrollOnColor;
+
+            cbEnableMute.Checked = ledSettings.EnableMute;
+            btnMuteOffColour.BackColor = ledSettings.MuteOffColor;
+            btnMuteOnColour.BackColor = ledSettings.MuteOnColor;
+            cbMuteIndicatorKey.SelectedItem = ledSettings.MuteIndicatorKey;
 
             cbAutoStartApp.Checked = ledSettings.AutoStartApp;
 
@@ -90,7 +102,9 @@ namespace LogiLockLED
             ledSettings.EnableCaps = cbEnableCaps.Checked;
             ledSettings.EnableNum = cbEnableNum.Checked;
             ledSettings.EnableScroll = cbEnableScroll.Checked;
-            
+            ledSettings.EnableMute = cbEnableMute.Checked;
+
+            ledSettings.MuteIndicatorKey = (LockKey)cbMuteIndicatorKey.SelectedItem;
 
             ledSettings.OsdEnabled = cbOsdEnabled.Checked;
             ledSettings.OsdPosition = (OSDPosition)cbOSDPosition.SelectedItem;
@@ -103,6 +117,8 @@ namespace LogiLockLED
             ledSettings.CapsOnColor = btnCapsOnColour.BackColor;
             ledSettings.NumOffColor = btnNumOffColour.BackColor;
             ledSettings.NumOnColor = btnNumOnColour.BackColor;
+            ledSettings.MuteOffColor = btnMuteOffColour.BackColor;
+            ledSettings.MuteOnColor = btnMuteOnColour.BackColor;
             ledSettings.ScrollOffColor = btnScrollOffColour.BackColor;
             ledSettings.ScrollOnColor = btnScrollOnColour.BackColor;
             ledSettings.OsdTextColor = btnOsdTxtColour.BackColor == Color.Black ? Color.FromArgb(3, 3, 3) : btnOsdTxtColour.BackColor;
