@@ -4,8 +4,8 @@ LogiLockLED is a system tray application that makes it easier to monitor Num, Ca
 LogiLockLED has three ways to make life easier for you:
 - On-Screen display shows up when any of the locks are triggered
 - System tray icons shows key lock states
-- Users of backlit Logitech keyboards can illuminate the lock keys in different colors based on lock state.
-- You can choose which lock keys should be monitored
+- Users of RGB/backlit keyboards can illuminate the lock keys in different colors based on keylock state.  This is done via GHub or OpenRGB integrations.
+- You can choose which lock keys should be monitored oe ignored
 
 Multitude of configuration options are available to disable/enable features and adjust the look and feel of the notifications and icons.  The application can easily be enabled or disabled from the context menu on the main system tray icon.
 
@@ -20,18 +20,18 @@ Download and install the latest release of the application : https://github.com/
 
 When the application start it will show an icon in the notification area, also known as the system tray.  By default it will also show the Caps and Num lock icons.
 
-The default Windows 10 behaviour is to hide icons in the notification area after some time.  If you want the icons to be permanently visible, follow these steps:
+By default Windows 10 will hide icons in the notification area after some time.  If you want the icons to be permanently visible, follow these steps:
 - Right click on a blank area of the taskbar to show a context menu.
 - Select the “Taskbar settings” option to show the Taskbar settings window.
 - Scroll down until you see the “Notification area” section.   Click on the “Select which icons appear on the taskbar” item, which will show a list of icons that appeared in the notification area.
-- Find the “LogiLockLED” item in the list and turn it on.
+- Find the “LogiLockLED” item in the list and turn it on. 
 
 ### Configuration:
 LogiLockLED allows for a number of customizations and tweaks in the configuration window:
 - Right click on the LogiLockLED icon in the notification area / system tray and click “Configuration”
-- The configuration window has a General Settings  area for global settings
-- Below that there is a number of tabs for configuring notifications
-  - Key Back Light: Settings for Logitech backlit keyboards
+- The configuration window has a General Settings area for global settings
+- Below that there are a number of tabs for configuring notifications
+  - Key Back Light: Settings for RGB/backlit keyboards
   - On-Screen Display: Look and feel settings for the OSD window
   - System Tray Indicators: Settings for key lock icons in the notification area
 
